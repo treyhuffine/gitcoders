@@ -17,6 +17,7 @@ export default class App extends React.Component {
     this.onStoreChange = this.onStoreChange.bind(this);
     console.log("state$$$$$", this.state);
   }
+  // get initial state instead of constructor?
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
     console.log("change", this.state);
@@ -34,8 +35,6 @@ export default class App extends React.Component {
     return (
       <div className="app-wrapper">
         <NavGC currentUser={this.state.currentUser} />
-        <h1>Git coders</h1>
-        <a href="http://localhost:3000/auth/github">Login</a>
         {this.props.children}
       </div>
     );
