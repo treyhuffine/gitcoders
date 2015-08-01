@@ -7,7 +7,8 @@ let _currentUser = {};
 
 class UserEventEmitter extends AppEventEmitter {
   getCurrentUser() {
-    return _currentUser
+    console.log(_currentUser);
+    return _currentUser;
   }
 }
 
@@ -16,7 +17,9 @@ let UserStore = new UserEventEmitter();
 AppDispatcher.register(action => {
   switch(action.actionType) {
     case Actions.GET_CURRENT_USER:
+      console.log("payload****", action.payload);
       _currentUser = action.payload;
+      console.log("GETTING USER", _currentUser);
       UserStore.emitChange();
       break;
 

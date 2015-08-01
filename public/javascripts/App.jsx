@@ -3,17 +3,8 @@ import React, { PropTypes } from 'react';
 import API from './API'
 import UserStore from './stores/UserStore';
 
-// import Landing from './components/Landing';
-// let getCurrentUserFromStore = () => {
-//   return { currentUser: UserStore.getCurrentUser() };
-// }
-// $.get('http://localhost:3000/currentuser')
-// .success( user => {
-//   console.log(user);
-// })
-// .error( error => {
-//   console.log(error);
-// })
+API.getCurrentUser();
+
 let getCurrentUserFromStore = () => {
   return { currentUser: UserStore.getCurrentUser() };
 }
@@ -23,10 +14,17 @@ export default class App extends React.Component {
     super(props);
     this.state = getCurrentUserFromStore();
     this.onStoreChange = this.onStoreChange.bind(this);
+    console.log("state$$$$$", this.state);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
     console.log("change", this.state);
+  }
+  componentDidMount() {
+    UserStore.addChangeListener(this.onStoreChange);
+  }
+  componentWillUnmount() {
+    UserStore.removeChangeListener(this.onStoreChange);
   }
   static propTypes: {
     children: PropTypes.object

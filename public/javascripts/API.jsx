@@ -5,7 +5,7 @@ export default {
   getCurrentUser() {
     $.get("/currentuser")
     .success(user => {
-      console.log(user);
+      console.log("++++ API ++++", user);
       ServerActionsCreator.getCurrentUser(user)
     })
     .error(error => {
