@@ -1,4 +1,3 @@
-import $ from '../vendor/jquery.min'
 import React from 'react';
 import LoginCard from './LoginCard';
 

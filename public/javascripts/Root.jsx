@@ -1,4 +1,4 @@
-import $ from './vendor/jquery.min'
+import $ from './vendor/jquery.min';
 import React, { PropTypes, Component } from 'react';
 import { Router, Route, Link} from 'react-router';
 import { history } from 'react-router/lib/HashHistory';
@@ -7,7 +7,7 @@ import App from './App.jsx'
 import Landing from './components/Landing';
 import ProfilePage from './components/ProfilePage';
 import AuthSession from './components/AuthSession';
-import LoginPage from './components/LoginPage';
+import LoginPage from './components/login/LoginPage';
 
 export default class Root extends React.Component {
   render() {
