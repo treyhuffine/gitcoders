@@ -1,11 +1,7 @@
 import $ from './vendor/jquery.min'
-import React from 'react';
-
+import React, { PropTypes, Component } from 'react';
 import { Router, Route, Link} from 'react-router';
 import { history } from 'react-router/lib/HashHistory';
-// import BrowserHistory from 'react-router/lib/BrowserHistory';
-
-// const history = new BrowserHistory
 
 import App from './App.jsx'
 import Landing from './components/Landing';

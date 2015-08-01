@@ -1,6 +1,7 @@
 import $ from './vendor/jquery.min'
 import React, { PropTypes } from 'react';
 import API from './API'
+import UserStore from './stores/UserStore';
 
 // import Landing from './components/Landing';
 // let getCurrentUserFromStore = () => {
@@ -13,16 +14,20 @@ import API from './API'
 // .error( error => {
 //   console.log(error);
 // })
+let getCurrentUserFromStore = () => {
+  return { currentUser: UserStore.getCurrentUser() };
+}
+
 export default class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = getCurrentUserFromStore();
-  //   this.onStoreChange = this.onStoreChange.bind(this);
-  // }
-  // onStoreChange() {
-  //   console.log("change");
-  //   this.setState(getCurrentUserFromStore());
-  // }
+  constructor(props) {
+    super(props);
+    this.state = getCurrentUserFromStore();
+    this.onStoreChange = this.onStoreChange.bind(this);
+  }
+  onStoreChange() {
+    this.setState(getCurrentUserFromStore());
+    console.log("change", this.state);
+  }
   static propTypes: {
     children: PropTypes.object
   }

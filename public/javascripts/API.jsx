@@ -1,10 +1,12 @@
+import $ from './vendor/jquery.min';
 import ServerActionsCreator from "./actions/ServerActionsCreator";
 
 export default {
-  loginUserGithub() {
-    $get("/auth/github")
+  getCurrentUser() {
+    $.get("/currentuser")
     .success(user => {
       console.log(user);
+      ServerActionsCreator.getCurrentUser(user)
     })
     .error(error => {
       console.log(error);

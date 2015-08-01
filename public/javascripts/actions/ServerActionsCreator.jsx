@@ -4,7 +4,7 @@ import Actions from "../constants"
 export default {
   getCurrentUser(payload) {
     AppDispatcher.dispatch({
-      actionType: GET_CURRENT_USER,
+      actionType: Actions.GET_CURRENT_USER,
       payload
     })
   },
