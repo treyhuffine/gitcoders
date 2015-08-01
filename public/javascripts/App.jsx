@@ -2,6 +2,7 @@ import $ from './vendor/jquery.min'
 import React, { PropTypes } from 'react';
 import API from './API'
 import UserStore from './stores/UserStore';
+import NavGC from './components/NavGC';
 
 API.getCurrentUser();
 
@@ -32,6 +33,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app-wrapper">
+        <NavGC currentUser={this.state.currentUser} />
         <h1>Git coders</h1>
         <a href="http://localhost:3000/auth/github">Login</a>
         {this.props.children}
