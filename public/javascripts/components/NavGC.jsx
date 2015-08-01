@@ -21,7 +21,6 @@ export default class NavGC extends React.Component {
       <nav>
         <div className="nav-wrapper black z-depth-1">
           <a href="#" className="brand-logo" style={logoStyle}>GitCoders</a>
-          <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down">
             <li className="navButtons"><a href="/auth/github">Login</a></li>
           </ul>
