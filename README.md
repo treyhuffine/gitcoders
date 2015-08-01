@@ -1,2 +1,2 @@
 # gitcoders-backend
-Back-end for the git-based professional network
+Git-based professional network for developers to display their portfolio
