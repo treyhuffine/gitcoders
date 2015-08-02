@@ -4,6 +4,7 @@ import API from '../API';
 
 import UserStore from '../stores/UserStore';
 import LoginPage from './login/LoginPage';
+import DashboardPage from './dashboard/DashboardPage';
 
 API.getCurrentUser();
 
@@ -32,7 +33,7 @@ export default class Landing extends React.Component{
     if ($.isEmptyObject(this.state.currentUser)) {
       return <LoginPage />
     } else {
-      return <h1>LOGGED IN</h1>
+      return <DashboardPage currentUser={this.state.currentUser} />
     }
   }
 }
