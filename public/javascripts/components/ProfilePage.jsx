@@ -21,15 +21,22 @@ let getUserProfileFromStore = () => {
   return { userProfile: ProfileStore.getUserProfile() };
 }
 
+let userImage = {
+  'width': '250px'
+}
+
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     let { params } = this.props
     console.log("PARAMS", params.username);
     API.getUserProfile(params.username);
-    console.log("API-----", API.getUserProfile);
-    // this.setState(getCurrentUserFromStore());
-    // this.setState(getUserProfileFromStore());
+    this.state = {
+      userProfile: {
+        githubData: {}
+      },
+      currentUser: {}
+    }
     this.onStoreChange = this.onStoreChange.bind(this);
     console.log("state$$$$$", this.state);
   }
@@ -41,18 +48,36 @@ export default class Profile extends React.Component {
   componentWillMount() {
     requestData(this.props);
     CurrentUserStore.addChangeListener(this.onStoreChange);
+    ProfileStore.addChangeListener(this.onStoreChange);
   }
   componentWillUnmount() {
     CurrentUserStore.removeChangeListener(this.onStoreChange);
+    ProfileStore.removeChangeListener(this.onStoreChange);
   }
   render() {
     const { params } = this.props;
     const username = parseUsername(params);
     console.log(username);
     console.log(this.state);
+    // let gitContent = this.state.userProfile;
     return (
-      <div className="username-container">
-        <h1>Profile for {username}</h1>
+      <div className="profile-container">
+        <div className="container">
+          <div className="row">
+            <div className="row">
+              <div className="col s12 m12">
+                <div className="card-panel white">
+                  <span>
+                    <img src={this.state.userProfile.githubData.avatar_url} alt="user" style={userImage}/>
+                  </span>
+                  <span className="black-text">
+                    words
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

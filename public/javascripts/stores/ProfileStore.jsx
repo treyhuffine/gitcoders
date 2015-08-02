@@ -18,7 +18,7 @@ AppDispatcher.register(action => {
   switch(action.actionType) {
     case Actions.GET_USER_PROFILE:
       console.log("payload****", action.payload);
-      _userProfie = action.payload;
+      _userProfile = action.payload;
       console.log("GETTING USER", _userProfile);
       ProfileStore.emitChange();
       break;
