@@ -25,7 +25,7 @@ var routes = (passport, mongoose) => {
 
       if (user) {
         res.json(user)
-      } 
+      }
 
       if (!user) {
         // hit github api
