@@ -13,6 +13,7 @@ export default {
     })
   },
   getUserProfile(username) {
+    console.log("IN API", username);
     $.get("/userprofile/" + username)
     .success(user => {
       console.log("PROFILE =======", user)

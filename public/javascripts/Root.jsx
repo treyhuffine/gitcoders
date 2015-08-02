@@ -21,7 +21,7 @@ export default class Root extends React.Component {
       <Router history={history}>
         <Route name="app" component={App}>
           <Route name="landing" path="/" component={Landing} />
-          <Route name="profile" path="/git/:login" component={ProfilePage} />
+          <Route name="profile" path="/git/:username" component={ProfilePage} />
           <Route name="authsession" path="/auth/:auth_token" component={AuthSession} />
         </Route>
       </Router>

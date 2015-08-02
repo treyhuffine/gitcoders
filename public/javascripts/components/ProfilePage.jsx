@@ -1,13 +1,15 @@
 import React from 'react';
 import API from '../API';
-import CurrentUserStore from '../stores/CurrentUserStore';
 
-function parseLogin(params) {
-  return params.login;
+import CurrentUserStore from '../stores/CurrentUserStore';
+import ProfileStore from '../stores/ProfileStore';
+
+function parseUsername(params) {
+  return params.username;
 }
 function requestData(props) {
   const { params } = props;
-  const userLogin = parseLogin(params);
+  const userUsername = parseUsername(params);
 
   // UserActionCreators.requestUser(userLogin, ['name', 'avatarUrl']);
   // RepoActionCreators.requestStarredReposPage(userLogin, true);
@@ -22,13 +24,18 @@ let getUserProfileFromStore = () => {
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.setState(getCurrentUserFromStore());
-    this.setState(getUserProfileFromStore());
+    let { params } = this.props
+    console.log("PARAMS", params.username);
+    API.getUserProfile(params.username);
+    console.log("API-----", API.getUserProfile);
+    // this.setState(getCurrentUserFromStore());
+    // this.setState(getUserProfileFromStore());
     this.onStoreChange = this.onStoreChange.bind(this);
     console.log("state$$$$$", this.state);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
+    this.setState(getUserProfileFromStore());
     console.log("change", this.state);
   }
   componentWillMount() {
@@ -40,12 +47,12 @@ export default class Profile extends React.Component {
   }
   render() {
     const { params } = this.props;
-    const login = parseLogin(params);
-    console.log(login, user);
+    const username = parseUsername(params);
+    console.log(username);
     console.log(this.state);
     return (
-      <div className="login-container">
-        <h1>Profile for {login}</h1>
+      <div className="username-container">
+        <h1>Profile for {username}</h1>
       </div>
     );
   }
