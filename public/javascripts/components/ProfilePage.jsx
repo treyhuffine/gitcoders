@@ -19,6 +19,7 @@ export default class Profile extends React.Component {
   render() {
     const { user, params } = this.props;
     const login = parseLogin(params);
+    console.log(login);
     return (
       <div className="login-container">
         <h1>Profile for {login}</h1>

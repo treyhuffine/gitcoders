@@ -8,22 +8,10 @@ export default {
       payload
     })
   },
-  receiveResources(payload) {
+  getUserProfile(payload) {
     AppDispatcher.dispatch({
-      actionType: Actions.RECEIVE_RESOURCES,
+      actionType: Actions.GET_USER_PROFILE,
       payload
-    })
-  },
-  addNewResource(resource) {
-    AppDispatcher.dispatch({
-      actionType: Actions.ADD_NEW_RESOURCE,
-      resource
-    })
-  },
-  deleteResource(resourceIndex) {
-    AppDispatcher.dispatch({
-      actionType: Actions.DELETE_RESOURCE,
-      resourceIndex
     })
   }
 }
