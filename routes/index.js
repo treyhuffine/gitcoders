@@ -19,9 +19,18 @@ var routes = (passport, mongoose) => {
     let User = require('../models/user');
     console.log(req.params.username);
     User.findOne({ 'username': new RegExp('^'+req.params.username+'$', "i") }).exec( (err, user) =>  {
-      console.log(user);
+      if (err) {
+        res.status(400);
+      }
+
+      if (user) {
+        res.json(user)
+      } 
+
+      if (!user) {
+        // hit github api
+      }
     })
-    res.json({message: "complete"});
   });
   router.get('/', (req, res, next) => {
     console.log(req.user);
