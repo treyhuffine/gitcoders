@@ -55,6 +55,7 @@ module.exports = function(passport) {
             var newUser = new User();
             newUser.githubID = profile._json.id;
             newUser.githubData = profile._json;
+            newUser.username = profile._json.login;
             newUser.token = require('crypto').randomBytes(64).toString('hex');
 
             // save our user into the database
@@ -67,6 +68,7 @@ module.exports = function(passport) {
                 username: newUser.githubData.login,
                 token: newUser.token
               }
+              console.log(userData.username);
               return done(null, userData);
             });
           }
