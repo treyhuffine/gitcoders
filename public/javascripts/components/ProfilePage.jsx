@@ -22,7 +22,22 @@ let getUserProfileFromStore = () => {
 }
 
 let userImage = {
-  'width': '250px'
+  'width': '100%'
+}
+let name = {
+  'fontSize': '1.8em'
+}
+let usernameTag = {
+  'marginLeft': '10px',
+  'fontSize': '1.7em',
+  'color': 'rgb(119, 119, 119)'
+}
+let follower = {
+  'fontSize': '1.5em'
+}
+let following = {
+  'fontSize': '1.5em',
+  'marginLeft': '15px'
 }
 
 export default class Profile extends React.Component {
@@ -59,19 +74,23 @@ export default class Profile extends React.Component {
     const username = parseUsername(params);
     console.log(username);
     console.log(this.state);
-    // let gitContent = this.state.userProfile;
+    let gitContent = this.state.userProfile;
     return (
       <div className="profile-container">
         <div className="container">
           <div className="row">
-            <div className="row">
-              <div className="col s12 m12">
-                <div className="card-panel white">
-                  <span>
-                    <img src={this.state.userProfile.githubData.avatar_url} alt="user" style={userImage}/>
+            <div className="col s12 m12">
+              <div className="card-panel white">
+                <div className="row">
+                  <span className="col s4">
+                    <img src={gitContent.githubData.avatar_url} alt="user" style={userImage} className="z-depth-1"/>
                   </span>
-                  <span className="black-text">
-                    words
+                  <span className="black-text col s8" style={{'verticalAlign': 'top'}}>
+                    <span style={name}>{gitContent.githubData.name}</span>
+                    <span style={usernameTag}>({gitContent.username})</span>
+                    <hr />
+                    <span style={follower}>Followers: {gitContent.githubData.followers}</span>
+                    <span style={following}>Following: {gitContent.githubData.following}</span>
                   </span>
                 </div>
               </div>

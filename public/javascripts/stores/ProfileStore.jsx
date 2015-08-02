@@ -3,7 +3,9 @@ import Actions from "../constants";
 import AppEventEmitter from "./AppEventEmitter";
 import API from "../API"
 
-let _userProfile = {};
+let _userProfile = {
+  githubData: {}
+};
 
 class ProfileEventEmitter extends AppEventEmitter {
   getUserProfile() {

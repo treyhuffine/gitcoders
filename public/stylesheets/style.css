@@ -12,3 +12,7 @@ a {
 .navButtons:hover {
   background-color: rgb(59, 59, 60);
 }
+
+.row {
+  margin-bottom: 0px;
+}
