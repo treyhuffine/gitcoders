@@ -2,14 +2,14 @@ import $ from '../vendor/jquery.min';
 import React from 'react';
 import API from '../API';
 
-import UserStore from '../stores/UserStore';
+import CurrentUserStore from '../stores/CurrentUserStore';
 import LoginPage from './login/LoginPage';
 import DashboardPage from './dashboard/DashboardPage';
 
 API.getCurrentUser();
 
 let getCurrentUserFromStore = () => {
-  return { currentUser: UserStore.getCurrentUser() };
+  return { currentUser: CurrentUserStore.getCurrentUser() };
 }
 
 export default class Landing extends React.Component{
@@ -24,10 +24,10 @@ export default class Landing extends React.Component{
     console.log("change", this.state);
   }
   componentDidMount() {
-    UserStore.addChangeListener(this.onStoreChange);
+    CurrentUserStore.addChangeListener(this.onStoreChange);
   }
   componentWillUnmount() {
-    UserStore.removeChangeListener(this.onStoreChange);
+    CurrentUserStore.removeChangeListener(this.onStoreChange);
   }
   render() {
     if ($.isEmptyObject(this.state.currentUser)) {

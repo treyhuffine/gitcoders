@@ -1,13 +1,13 @@
 import $ from './vendor/jquery.min';
 import React, { PropTypes } from 'react';
 import API from './API';
-import UserStore from './stores/UserStore';
+import CurrentUserStore from './stores/CurrentUserStore';
 import NavGC from './components/NavGC';
 
 API.getCurrentUser();
 
 let getCurrentUserFromStore = () => {
-  return { currentUser: UserStore.getCurrentUser() };
+  return { currentUser: CurrentUserStore.getCurrentUser() };
 }
 
 export default class App extends React.Component {
@@ -22,10 +22,10 @@ export default class App extends React.Component {
     console.log("change", this.state);
   }
   componentDidMount() {
-    UserStore.addChangeListener(this.onStoreChange);
+    CurrentUserStore.addChangeListener(this.onStoreChange);
   }
   componentWillUnmount() {
-    UserStore.removeChangeListener(this.onStoreChange);
+    CurrentUserStore.removeChangeListener(this.onStoreChange);
   }
   static propTypes: {
     children: PropTypes.object

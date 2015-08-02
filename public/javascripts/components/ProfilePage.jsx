@@ -1,6 +1,6 @@
 import React from 'react';
 import API from '../API';
-import UserStore from '../stores/UserStore';
+import CurrentUserStore from '../stores/CurrentUserStore';
 
 function parseLogin(params) {
   return params.login;
@@ -13,13 +13,17 @@ function requestData(props) {
   // RepoActionCreators.requestStarredReposPage(userLogin, true);
 }
 let getCurrentUserFromStore = () => {
-  return { currentUser: UserStore.getCurrentUser() };
+  return { currentUser: CurrentUserStore.getCurrentUser() };
+}
+let getUserProfileFromStore = () => {
+  return { userProfile: ProfileStore.getUserProfile() };
 }
 
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = getCurrentUserFromStore();
+    this.setState(getCurrentUserFromStore());
+    this.setState(getUserProfileFromStore());
     this.onStoreChange = this.onStoreChange.bind(this);
     console.log("state$$$$$", this.state);
   }
@@ -29,10 +33,10 @@ export default class Profile extends React.Component {
   }
   componentWillMount() {
     requestData(this.props);
-    UserStore.addChangeListener(this.onStoreChange);
+    CurrentUserStore.addChangeListener(this.onStoreChange);
   }
   componentWillUnmount() {
-    UserStore.removeChangeListener(this.onStoreChange);
+    CurrentUserStore.removeChangeListener(this.onStoreChange);
   }
   render() {
     const { params } = this.props;
