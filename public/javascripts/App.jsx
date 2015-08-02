@@ -1,6 +1,6 @@
-import $ from './vendor/jquery.min'
+import $ from './vendor/jquery.min';
 import React, { PropTypes } from 'react';
-import API from './API'
+import API from './API';
 import UserStore from './stores/UserStore';
 import NavGC from './components/NavGC';
 
@@ -17,7 +17,6 @@ export default class App extends React.Component {
     this.onStoreChange = this.onStoreChange.bind(this);
     console.log("state$$$$$", this.state);
   }
-  // get initial state instead of constructor?
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
     console.log("change", this.state);
@@ -32,6 +31,7 @@ export default class App extends React.Component {
     children: PropTypes.object
   }
   render() {
+    console.log(this);
     return (
       <div className="app-wrapper">
         <NavGC currentUser={this.state.currentUser} />

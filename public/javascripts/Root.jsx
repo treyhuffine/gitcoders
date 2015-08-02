@@ -1,6 +1,6 @@
 import $ from './vendor/jquery.min';
 import React, { PropTypes, Component } from 'react';
-import { Router, Route, Link} from 'react-router';
+import { Router, Route, Link } from 'react-router';
 import { history } from 'react-router/lib/HashHistory';
 
 import App from './App.jsx'
@@ -11,10 +11,11 @@ import LoginPage from './components/login/LoginPage';
 
 export default class Root extends React.Component {
   render() {
+  console.log(this);
     return (
       <Router history={history}>
-        <Route name="landing" path="/" component={App}>
-          <Route name="login" path="login" component={LoginPage} />
+        <Route name="app" component={App}>
+          <Route name="landing" path="/" component={Landing} />
           <Route name="profile" path="/git/:login" component={ProfilePage} />
           <Route name="authsession" path="/auth/:auth_token" component={AuthSession} />
         </Route>
