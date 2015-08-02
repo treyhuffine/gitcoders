@@ -10,7 +10,8 @@ export default {
     })
     .error(error => {
       console.log(error);
-    }),
+    })
+  },
   getUserProfile(username) {
     $.get("/userprofile/" + username)
     .success(user => {

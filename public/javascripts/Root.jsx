@@ -4,7 +4,7 @@ import { Router, Route, Link } from 'react-router';
 import { history } from 'react-router/lib/HashHistory';
 
 import API from './API';
-import App from './App.jsx';
+import App from './App';
 import Landing from './components/Landing';
 import ProfilePage from './components/ProfilePage';
 import AuthSession from './components/AuthSession';
