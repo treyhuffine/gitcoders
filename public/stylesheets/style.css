@@ -21,3 +21,15 @@ a {
   cursor: pointer;
   background-color: #dfdedf;
 }
+
+.waves-effect {
+  width: 100%;
+}
+/*
+li {
+  list-style: circle !important;
+  margin-left: 22px;
+}
+ul {
+  margin-top: 5px;
+}*/
