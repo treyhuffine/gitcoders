@@ -80,31 +80,26 @@ export default class Profile extends React.Component {
             <div className="card-panel white">
               <div>
                 <img src={gitContent.githubData.avatar_url} alt="user" style={userImage} className="z-depth-1"/>
+                {gitContent.githubData.location}
               </div>
               <div>
-                <div style={name}>{gitContent.githubData.name}</div>
-                <div style={usernameTag}>({gitContent.username})</div>
-                <hr />
-                <div style={follower}>Top Languages</div>
-                location, email, personal website, resume, blog
-                <hr />
-                <div style={follower}>Followers: {gitContent.githubData.followers}</div>
-                <div style={following}>Following: {gitContent.githubData.following}</div>
-                Social media links
+                <ul className="collection">
+                  <li className="collection-item"><i className="material-icons">email</i>Contact</li>
+                  <li className="collection-item"><i className="material-icons">description</i>Resume</li>
+                  <li className="collection-item"><i className="material-icons">perm_identity</i>Personal Website</li>
+                  <li className="collection-item"><i className="material-icons">message</i>Blog</li>
+                  <li className="collection-item"><i className="material-icons">assessment</i>Chat on Gitter</li>
+                </ul>
               </div>
             </div>
           </div>
-          <div className="col s12 m9">
+          <div className="col s12 m6">
             <div className="card-panel white">
               <div>
-                <span style={name}>{gitContent.githubData.name}</span>
+                <span style={name}>{gitContent.githubData.name} </span>
                 <span style={usernameTag}>({gitContent.username})</span>
                 <hr />
-                <div style={follower}>Top Languages</div>
-                location, email, personal website, resume, blog
-                <hr />
-                <div style={follower} className="right">Followers: {gitContent.githubData.followers}</div>
-                <div style={following} className="right">Following: {gitContent.githubData.following}</div>
+                This is a user's tagline, it should be brief but give personality
               </div>
             </div>
             <ul className="collection z-depth-1">
@@ -141,6 +136,22 @@ export default class Profile extends React.Component {
                 <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
               </li>
             </ul>
+          </div>
+          <div className="col s12 m3">
+            <div className="card-panel white">
+              <div>
+                <div style={follower}>Full Stack Developer</div>
+                <ul>
+                  <li>JavaScript</li>
+                  <li>Mean Stack</li>
+                  <li>React</li>
+                </ul>
+                <hr />
+                <div>Followers: {gitContent.githubData.followers}</div>
+                <div>Following: {gitContent.githubData.following}</div>
+                <div>Repos: {gitContent.githubData.public_repos}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
