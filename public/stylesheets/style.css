@@ -16,3 +16,8 @@ a {
 .row {
   margin-bottom: 0px;
 }
+
+.user-link:hover {
+  cursor: pointer;
+  background-color: #dfdedf;
+}

@@ -3,6 +3,7 @@ import API from '../../API';
 
 import CurrentUserStore from '../../stores/CurrentUserStore';
 import ProfileStore from '../../stores/ProfileStore';
+import UserCard from './UserCard';
 
 function parseUsername(params) {
   return params.username;
@@ -21,9 +22,6 @@ let getUserProfileFromStore = () => {
   return { userProfile: ProfileStore.getUserProfile() };
 }
 
-let userImage = {
-  'width': '100%'
-}
 let name = {
   'fontSize': '1.8em'
 }
@@ -77,29 +75,7 @@ export default class Profile extends React.Component {
       <div className="profile-container">
         <div className="row">
           <div className="col s12 m3">
-            <div className="card-panel white">
-              <div>
-                <img src={gitContent.githubData.avatar_url} alt="user" style={userImage} className="z-depth-1"/>
-                {gitContent.githubData.location}
-              </div>
-              <div>
-                <ul className="collection">
-                  <li className="collection-item"><i className="material-icons">email</i>Contact</li>
-                  <li className="collection-item"><i className="material-icons">description</i>Resume</li>
-                  <li className="collection-item"><i className="material-icons">perm_identity</i>Personal Website</li>
-                  <li className="collection-item"><i className="material-icons">message</i>Blog</li>
-                  <li className="collection-item"><i className="material-icons">assessment</i>Chat on Gitter</li>
-                </ul>
-              </div>
-              <div>
-                <div style={follower}>Preferred Location</div>
-                <ul>
-                  <li>Bay Area</li>
-                  <li>Seattle</li>
-                  <li>Austin</li>
-                </ul>
-              </div>
-            </div>
+            <UserCard userData={this.state} />
           </div>
           <div className="col s12 m6">
             <div className="card-panel white">
