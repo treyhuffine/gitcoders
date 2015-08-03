@@ -2,7 +2,7 @@ import $ from './vendor/jquery.min';
 import React, { PropTypes } from 'react';
 import API from './API';
 import CurrentUserStore from './stores/CurrentUserStore';
-import NavGC from './components/NavGC';
+import NavGC from './components/navbar/NavGC';
 
 API.getCurrentUser();
 
