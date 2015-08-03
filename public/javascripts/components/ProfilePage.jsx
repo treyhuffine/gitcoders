@@ -28,7 +28,6 @@ let name = {
   'fontSize': '1.8em'
 }
 let usernameTag = {
-  'marginLeft': '10px',
   'fontSize': '1.7em',
   'color': 'rgb(119, 119, 119)'
 }
@@ -36,8 +35,7 @@ let follower = {
   'fontSize': '1.5em'
 }
 let following = {
-  'fontSize': '1.5em',
-  'marginLeft': '15px'
+  'fontSize': '1.5em'
 }
 
 export default class Profile extends React.Component {
@@ -77,24 +75,72 @@ export default class Profile extends React.Component {
     let gitContent = this.state.userProfile;
     return (
       <div className="profile-container">
-        <div className="container">
-          <div className="row">
-            <div className="col s12 m12">
-              <div className="card-panel white">
-                <div className="row">
-                  <span className="col s4">
-                    <img src={gitContent.githubData.avatar_url} alt="user" style={userImage} className="z-depth-1"/>
-                  </span>
-                  <span className="black-text col s8" style={{'verticalAlign': 'top'}}>
-                    <span style={name}>{gitContent.githubData.name}</span>
-                    <span style={usernameTag}>({gitContent.username})</span>
-                    <hr />
-                    <span style={follower}>Followers: {gitContent.githubData.followers}</span>
-                    <span style={following}>Following: {gitContent.githubData.following}</span>
-                  </span>
-                </div>
+        <div className="row">
+          <div className="col s12 m3">
+            <div className="card-panel white">
+              <div>
+                <img src={gitContent.githubData.avatar_url} alt="user" style={userImage} className="z-depth-1"/>
+              </div>
+              <div>
+                <div style={name}>{gitContent.githubData.name}</div>
+                <div style={usernameTag}>({gitContent.username})</div>
+                <hr />
+                <div style={follower}>Top Languages</div>
+                location, email, personal website, resume, blog
+                <hr />
+                <div style={follower}>Followers: {gitContent.githubData.followers}</div>
+                <div style={following}>Following: {gitContent.githubData.following}</div>
+                Social media links
               </div>
             </div>
+          </div>
+          <div className="col s12 m9">
+            <div className="card-panel white">
+              <div>
+                <span style={name}>{gitContent.githubData.name}</span>
+                <span style={usernameTag}>({gitContent.username})</span>
+                <hr />
+                <div style={follower}>Top Languages</div>
+                location, email, personal website, resume, blog
+                <hr />
+                <div style={follower} className="right">Followers: {gitContent.githubData.followers}</div>
+                <div style={following} className="right">Following: {gitContent.githubData.following}</div>
+              </div>
+            </div>
+            <ul className="collection z-depth-1">
+              <li className="collection-item avatar">
+                <img src="images/yuna.jpg" alt="" className="circle" />
+                <span className="title">Title</span>
+                <p>First Line <br/>
+                   Second Line
+                </p>
+                <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+              </li>
+              <li className="collection-item avatar">
+                <i className="material-icons circle">folder</i>
+                <span className="title">Title</span>
+                <p>First Line <br/>
+                   Second Line
+                </p>
+                <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+              </li>
+              <li className="collection-item avatar">
+                <i className="material-icons circle green">insert_chart</i>
+                <span className="title">Title</span>
+                <p>First Line <br/>
+                   Second Line
+                </p>
+                <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+              </li>
+              <li className="collection-item avatar">
+                <i className="material-icons circle red">play_arrow</i>
+                <span className="title">Title</span>
+                <p>First Line <br/>
+                   Second Line
+                </p>
+                <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
