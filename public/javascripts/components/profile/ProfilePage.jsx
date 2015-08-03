@@ -4,6 +4,7 @@ import API from '../../API';
 import CurrentUserStore from '../../stores/CurrentUserStore';
 import ProfileStore from '../../stores/ProfileStore';
 import UserCard from './UserCard';
+import ProfileHeader from './ProfileHeader';
 
 function parseUsername(params) {
   return params.username;
@@ -22,13 +23,6 @@ let getUserProfileFromStore = () => {
   return { userProfile: ProfileStore.getUserProfile() };
 }
 
-let name = {
-  'fontSize': '1.8em'
-}
-let usernameTag = {
-  'fontSize': '1.7em',
-  'color': 'rgb(119, 119, 119)'
-}
 let follower = {
   'fontSize': '1.5em'
 }
@@ -78,14 +72,7 @@ export default class Profile extends React.Component {
             <UserCard userData={this.state} />
           </div>
           <div className="col s12 m6">
-            <div className="card-panel white">
-              <div>
-                <span style={name}>{gitContent.githubData.name} </span>
-                <span style={usernameTag}>({gitContent.username})</span>
-                <hr />
-                This is a user's tagline, it should be brief but give personality
-              </div>
-            </div>
+            <ProfileHeader userData={this.state}/>
             <ul className="collection z-depth-1">
               <li className="collection-item avatar">
                 <img src="images/yuna.jpg" alt="" className="circle" />
