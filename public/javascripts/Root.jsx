@@ -6,7 +6,7 @@ import { history } from 'react-router/lib/HashHistory';
 import API from './API';
 import App from './App';
 import Landing from './components/Landing';
-import ProfilePage from './components/ProfilePage';
+import ProfilePage from './components/profile/ProfilePage';
 import AuthSession from './components/AuthSession';
 import LoginPage from './components/login/LoginPage';
 

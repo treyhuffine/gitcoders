@@ -1,8 +1,8 @@
 import React from 'react';
-import API from '../API';
+import API from '../../API';
 
-import CurrentUserStore from '../stores/CurrentUserStore';
-import ProfileStore from '../stores/ProfileStore';
+import CurrentUserStore from '../../stores/CurrentUserStore';
+import ProfileStore from '../../stores/ProfileStore';
 
 function parseUsername(params) {
   return params.username;
@@ -91,6 +91,14 @@ export default class Profile extends React.Component {
                   <li className="collection-item"><i className="material-icons">assessment</i>Chat on Gitter</li>
                 </ul>
               </div>
+              <div>
+                <div style={follower}>Preferred Location</div>
+                <ul>
+                  <li>Bay Area</li>
+                  <li>Seattle</li>
+                  <li>Austin</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div className="col s12 m6">
@@ -149,7 +157,21 @@ export default class Profile extends React.Component {
                 <hr />
                 <div>Followers: {gitContent.githubData.followers}</div>
                 <div>Following: {gitContent.githubData.following}</div>
-                <div>Repos: {gitContent.githubData.public_repos}</div>
+                <div>Public Repos: {gitContent.githubData.public_repos}</div>
+              </div>
+            </div>
+            <div className="card-panel white">
+                <div style={follower}>Brief Bio</div>
+                <div>
+                  Lorem ipsum dolor sit amet, no quo suas singulis. Civibus facilisis vix at. Sale modus quando an mel, ne est oratio integre apeirian. Eam at dictas urbanitas, ferri omnes mei ex, te vix persecuti intellegat.
+
+Et sanctus platonem vis. Pri at similique definitionem, at sed quod persecuti. An hinc saepe eum. Pri abhorreant reformidans voluptatibus te. Cetero pericula has et, ex sed quando mnesarchum.
+
+Cum te purto vulputate. Duo te purto reprimique. Ne sit diam utroque similique, no bonorum mentitum nam, ius habeo ancillae at. Mel verear repudiare in.
+
+Duo laudem adipisci eu. Ex vix feugiat percipit referrentur, ne erroribus laboramus mei. Wisi semper ei vim. Et reque quidam nusquam ius. Sea inani novum scripserit at, etiam audiam cotidieque eam cu. Sea ne diceret corrumpit, elitr ignota usu cu.
+
+Mel et erant exerci scribentur, augue vidisse perfecto mei ut. Enim vide libris ea eos, cum falli detracto no. Sea justo oratio at. Ei simul nobis eos. In qui laudem repudiare.
               </div>
             </div>
           </div>
