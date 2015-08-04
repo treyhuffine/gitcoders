@@ -12,24 +12,20 @@ a {
 .navButtons:hover {
   background-color: rgb(59, 59, 60);
 }
-
 .row {
   margin-bottom: 0px;
 }
-
 .user-link:hover {
   cursor: pointer;
   background-color: #dfdedf;
 }
-
 .waves-effect {
   width: 100%;
 }
-/*
-li {
-  list-style: circle !important;
-  margin-left: 22px;
+.is-active {
+  background-color: rgb(155, 157, 157) !important;
+  border-bottom: 3px solid #19A69A;
 }
-ul {
-  margin-top: 5px;
-}*/
+.tabs-menu, .tabs-navigation, .tabs-menu-item {
+  background-color: #BBB9B9;
+}
