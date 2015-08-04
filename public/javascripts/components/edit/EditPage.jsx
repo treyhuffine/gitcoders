@@ -1,9 +1,10 @@
 import $ from '../../vendor/jquery.min';
 import React from 'react';
 import CurrentUserStore from '../../stores/CurrentUserStore';
-// import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
 var Tabs = require('react-simpletabs');
 import {Input} from 'react-bootstrap';
+
+import EditDevSummary from './EditDevSummary';
 
 let unauthedEdit = {
   'position': 'absolute',
@@ -66,54 +67,7 @@ export default class EditPage extends React.Component {
           <Tabs.Panel title='Developer Summary'>
             <div className="container" style={topBuffer}>
               <div className="row card-panel white">
-                <form className="col s12">
-                  <div className="row">
-                    <div className="tab-title" style={tabTitle}>
-                      Developer Summary
-                    </div>
-                    <div className="col s12">
-                      <strong>Title</strong>
-                    </div>
-                    <div className="input-field col s12">
-                      <input id="user-title" type="text" className="validate" />
-                      <label htmlFor="user-title">Title (eg. Full stack developer, iOS Engineer, etc.)</label>
-                    </div>
-                    <div className="col s12">
-                      <strong>Top technologies (programming languages, frameworks, UI design, Photoshop, etc.)</strong>
-                    </div>
-                    <div className="input-field col m4 s12">
-                      <input id="tech1-input" type="text" className="validate" />
-                      <label htmlFor="tech1-input">Technology 1</label>
-                    </div>
-                    <div className="input-field col m4 s12">
-                      <input id="tech2-input" type="text" className="validate" />
-                      <label htmlFor="tech2-input">Technology 2</label>
-                    </div>
-                    <div className="input-field col m4 s12">
-                      <input id="tech3-input" type="text" className="validate" />
-                      <label htmlFor="tech3-input">Technology 3</label>
-                    </div>
-                    <div className="col s12">
-                      <strong>Desired locations to work</strong>
-                    </div>
-                    <div className="input-field col m4 s12">
-                      <input id="location1-input" type="text" className="validate" />
-                      <label htmlFor="location1-input">Location 1</label>
-                    </div>
-                    <div className="input-field col m4 s12">
-                      <input id="location2-input" type="text" className="validate" />
-                      <label htmlFor="location2-input">Location 2</label>
-                    </div>
-                    <div className="input-field col m4 s12">
-                      <input id="location3-input" type="text" className="validate" />
-                      <label htmlFor="location3-input">Locatoin 3</label>
-                    </div>
-                  </div>
-                  <button className="btn waves-effect waves-light" type="submit" name="action">
-                    <span style={buttonStyle}>Update Developer Profile</span>
-                    <i className="material-icons">send</i>
-                  </button>
-                </form>
+                <EditDevSummary />
               </div>
             </div>
           </Tabs.Panel>
