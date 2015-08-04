@@ -48,7 +48,7 @@ export default class UserCard extends React.Component {
             <li className="collection-item user-link waves-effect"><i className="material-icons" style={matIcon}>description</i><span>Résumé</span></li>
             <li className="collection-item user-link waves-effect"><i className="material-icons" style={matIcon}>perm_identity</i><span>Personal Website</span></li>
             <li className="collection-item user-link waves-effect"><i className="material-icons" style={matIcon}>message</i><span>Blog</span></li>
-            <li className="collection-item user-link waves-effect"><i className="material-icons" style={matIcon}>assessment</i><span>Contact</span></li>
+            <li className="collection-item user-link waves-effect"><i className="material-icons" style={matIcon}>assessment</i><span>Chat on Gitter</span></li>
           </ul>
         </div>
         <div>
