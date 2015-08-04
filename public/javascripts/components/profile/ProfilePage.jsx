@@ -5,6 +5,7 @@ import CurrentUserStore from '../../stores/CurrentUserStore';
 import ProfileStore from '../../stores/ProfileStore';
 import UserCard from './UserCard';
 import ProfileHeader from './ProfileHeader';
+import DeveloperSummary from './DeveloperSummary';
 
 function parseUsername(params) {
   return params.username;
@@ -110,18 +111,7 @@ export default class Profile extends React.Component {
           </div>
           <div className="col s12 m3">
             <div className="card-panel white">
-              <div>
-                <div style={follower}>Full Stack Developer</div>
-                <ul>
-                  <li>JavaScript</li>
-                  <li>Mean Stack</li>
-                  <li>React</li>
-                </ul>
-                <hr />
-                <div>Followers: {gitContent.githubData.followers}</div>
-                <div>Following: {gitContent.githubData.following}</div>
-                <div>Public Repos: {gitContent.githubData.public_repos}</div>
-              </div>
+              <DeveloperSummary userData={this.state} />
             </div>
             <div className="card-panel white">
                 <div style={follower}>Brief Bio</div>
