@@ -17,7 +17,6 @@ let buttonStyle = {
 export default class EditBio extends React.Component {
   updateUser(e) {
     e.preventDefault();
-    console.log("REFS+=+=", this.refs);
     let newAttributes = {}
     let currentUser = this.props.userData.currentUser.username;
     Object.keys(this.refs).forEach(key => newAttributes[key] = this.refs[key].getDOMNode().value);
