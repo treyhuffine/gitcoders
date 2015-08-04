@@ -18,21 +18,6 @@ let topBuffer = {
   'marginTop': '30px',
   'marginBottom': '30px'
 }
-let linkTag = {
-  'marginTop': '17px'
-}
-let tabTitle = {
-  'fontSize': '2rem',
-  'color': 'rgb(180, 180, 180)',
-  'borderBottom': '1px solid rgb(180, 180, 180)',
-  'textAlign': 'center',
-  'marginBottom': '15px',
-  'paddingBottom': '15px'
-}
-let buttonStyle = {
-  'verticalAlign': 'top',
-  'marginRight': '10px'
-}
 
 let getCurrentUserFromStore = () => {
   return { currentUser: CurrentUserStore.getCurrentUser() };
