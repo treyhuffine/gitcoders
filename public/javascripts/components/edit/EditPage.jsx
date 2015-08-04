@@ -3,12 +3,20 @@ import React from 'react';
 import CurrentUserStore from '../../stores/CurrentUserStore';
 // import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
 var Tabs = require('react-simpletabs');
+import {Input} from 'react-bootstrap';
 
 let unauthedEdit = {
   'position': 'absolute',
   'textAlign': 'center',
   'top': '40%',
   'left': '16%'
+}
+let topBuffer = {
+  'marginTop': '30px',
+  'marginBottom': '30px'
+}
+let linkTag = {
+  'marginTop': '17px'
 }
 
 let getCurrentUserFromStore = () => {
@@ -44,16 +52,19 @@ export default class EditPage extends React.Component {
             </div>
           </Tabs.Panel>
           <Tabs.Panel title='Developer Summary'>
-            <div className="container">
-              <div className="row">
+            <div className="container" style={topBuffer}>
+              <div className="row card-panel white">
                 <form className="col s12">
                   <div className="row">
+                    <div className="col s12">
+                      <strong>Title</strong>
+                    </div>
                     <div className="input-field col s12">
                       <input id="user-title" type="text" className="validate" />
-                      <label htmlFor="user-title">Title (eg. Full stack developer, iOS Engineer, ...)</label>
+                      <label htmlFor="user-title">Title (eg. Full stack developer, iOS Engineer, etc.)</label>
                     </div>
                     <div className="col s12">
-                      <strong>Top technologies (programming languages, frameworks, UI design, photoshop etc.)</strong>
+                      <strong>Top technologies (Programming languages, frameworks, UI design, Photoshop etc.)</strong>
                     </div>
                     <div className="input-field col m4 s12">
                       <input id="tech1-input" type="text" className="validate" />
@@ -66,10 +77,6 @@ export default class EditPage extends React.Component {
                     <div className="input-field col m4 s12">
                       <input id="tech3-input" type="text" className="validate" />
                       <label htmlFor="tech3-input">Technology 3</label>
-                    </div>
-                    <div className="input-field col s12">
-                      <textarea id="user-description" type="text" className="materialize-textarea validate" length="1000" maxlength="1000"></textarea>
-                      <label htmlFor="user-description">Breif description about yourself - be short and sweet!</label>
                     </div>
                     <div className="col s12">
                       <strong>Desired locations to work</strong>
@@ -95,8 +102,114 @@ export default class EditPage extends React.Component {
               </div>
             </div>
           </Tabs.Panel>
-          <Tabs.Panel title='Link Features'>
-            <h2>Content #3 here</h2>
+          <Tabs.Panel title='Profile Bio'>
+            <div className="container" style={topBuffer}>
+              <div className="row card-panel white">
+                <div className="row">
+                  <form className="col s12">
+                    <div className="col s12">
+                      <strong>Give yourself some personality with a unique tagline</strong>
+                    </div>
+                    <div className="input-field col s12">
+                      <input id="edit-tagline" type="text" className="validate" />
+                      <label htmlFor="edit-tagline">Tagline</label>
+                    </div>
+                    <div className="col s12">
+                      <strong>Give a brief description of yourself</strong>
+                    </div>
+                    <div className="input-field col s12">
+                      <textarea id="user-description" type="text" className="materialize-textarea validate" length="1000" maxlength="1000"></textarea>
+                      <label htmlFor="user-description">Breif description about yourself</label>
+                    </div>
+                    <div className="col s12">
+                      <button className="btn waves-effect waves-light" type="submit" name="action">
+                        <span>Update Bio</span>
+                        <i className="material-icons">send</i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </Tabs.Panel>
+          <Tabs.Panel title='Contact / Links'>
+            <div className="container" style={topBuffer}>
+              <div className="row">
+                <form className="col s12">
+                  <div className="container">
+                    <div className="row card-panel white">
+                      <div className="input-field">
+                        <div className="col s12 m4" style={linkTag}>
+                          Email
+                        </div>
+                        <div className="col s12 m8">
+                          <input id="edit-email" type="email" placeholder="Email" className="validate" required/>
+                        </div>
+                      </div>
+                      <div className="input-field">
+                        <div className="col s12 m4" style={linkTag}>
+                          Personal website URL
+                        </div>
+                        <div className="col s12 m8">
+                          <input id="edit-website" type="url" placeholder="Personal website"/>
+                        </div>
+                      </div>
+                      <div className="input-field">
+                        <div className="col s12 m4" style={linkTag}>
+                          Résumé
+                        </div>
+                        <div className="col s12 m8">
+                          <div className="file-field">
+                            <input className="file-path validate" type="text" placeholder="Click this to upload file..."/>
+                            <span>
+                              <input type="file" />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="input-field">
+                        <div className="col s12 m4" style={linkTag}>
+                          Blog URL
+                        </div>
+                        <div className="col s12 m8">
+                          <input id="edit-blog" type="url" placeholder="Blog URL"/>
+                        </div>
+                      </div>
+                      <div className="input-field">
+                        <div className="col s12 m4" style={linkTag}>
+                          LinkedIn Public URL
+                        </div>
+                        <div className="col s12 m8">
+                          <input id="edit-linkedin" type="url" placeholder="LinkedIn (linkedin.com/in/:username)"/>
+                        </div>
+                      </div>
+                      <div className="input-field">
+                        <div className="col s12 m4" style={linkTag}>
+                          Stackoverflow URL
+                        </div>
+                        <div className="col s12 m8">
+                          <input id="edit-stackoverflow" type="url" placeholder="Stackoverflow"/>
+                        </div>
+                      </div>
+                      <div className="input-field">
+                        <div className="col s12 m4" style={linkTag}>
+                          Twitter URL
+                        </div>
+                        <div className="col s12 m8">
+                          <input id="edit-blog" type="url" placeholder="Twitter"/>
+                        </div>
+                      </div>
+                      <div className="col s12">
+                        <button className="btn waves-effect waves-light" type="submit" name="action">
+                          <span>Update Links</span>
+                          <i className="material-icons">send</i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
           </Tabs.Panel>
         </Tabs>
       )
