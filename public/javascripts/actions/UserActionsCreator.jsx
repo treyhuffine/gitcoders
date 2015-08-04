@@ -13,5 +13,8 @@ export default {
       actionType: Actions.GET_USER_PROFILE,
       payload
     })
+  },
+  updateUserInfo(info) {
+    API.updateUserInfo(info);
   }
 }

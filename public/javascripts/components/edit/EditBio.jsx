@@ -1,4 +1,5 @@
 import React from 'react';
+import UserActionsCreator from '../../actions/UserActionsCreator';
 
 let tabTitle = {
   'fontSize': '2rem',
