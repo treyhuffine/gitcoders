@@ -18,6 +18,18 @@ let topBuffer = {
 let linkTag = {
   'marginTop': '17px'
 }
+let tabTitle = {
+  'fontSize': '2rem',
+  'color': 'rgb(180, 180, 180)',
+  'borderBottom': '1px solid rgb(180, 180, 180)',
+  'textAlign': 'center',
+  'marginBottom': '15px',
+  'paddingBottom': '15px'
+}
+let buttonStyle = {
+  'verticalAlign': 'top',
+  'marginRight': '10px'
+}
 
 let getCurrentUserFromStore = () => {
   return { currentUser: CurrentUserStore.getCurrentUser() };
@@ -56,6 +68,9 @@ export default class EditPage extends React.Component {
               <div className="row card-panel white">
                 <form className="col s12">
                   <div className="row">
+                    <div className="tab-title" style={tabTitle}>
+                      Developer Summary
+                    </div>
                     <div className="col s12">
                       <strong>Title</strong>
                     </div>
@@ -64,7 +79,7 @@ export default class EditPage extends React.Component {
                       <label htmlFor="user-title">Title (eg. Full stack developer, iOS Engineer, etc.)</label>
                     </div>
                     <div className="col s12">
-                      <strong>Top technologies (Programming languages, frameworks, UI design, Photoshop etc.)</strong>
+                      <strong>Top technologies (programming languages, frameworks, UI design, Photoshop, etc.)</strong>
                     </div>
                     <div className="input-field col m4 s12">
                       <input id="tech1-input" type="text" className="validate" />
@@ -95,7 +110,7 @@ export default class EditPage extends React.Component {
                     </div>
                   </div>
                   <button className="btn waves-effect waves-light" type="submit" name="action">
-                    <span>Update Developer Profile</span>
+                    <span style={buttonStyle}>Update Developer Profile</span>
                     <i className="material-icons">send</i>
                   </button>
                 </form>
@@ -106,6 +121,9 @@ export default class EditPage extends React.Component {
             <div className="container" style={topBuffer}>
               <div className="row card-panel white">
                 <div className="row">
+                  <div className="tab-title" style={tabTitle}>
+                    Profile Tagline and Biography
+                  </div>
                   <form className="col s12">
                     <div className="col s12">
                       <strong>Give yourself some personality with a unique tagline</strong>
@@ -115,15 +133,15 @@ export default class EditPage extends React.Component {
                       <label htmlFor="edit-tagline">Tagline</label>
                     </div>
                     <div className="col s12">
-                      <strong>Give a brief description of yourself</strong>
+                      <strong>Brief description of yourself</strong>
                     </div>
                     <div className="input-field col s12">
                       <textarea id="user-description" type="text" className="materialize-textarea validate" length="1000" maxlength="1000"></textarea>
-                      <label htmlFor="user-description">Breif description about yourself</label>
+                      <label htmlFor="user-description">Bio / summary</label>
                     </div>
                     <div className="col s12">
                       <button className="btn waves-effect waves-light" type="submit" name="action">
-                        <span>Update Bio</span>
+                        <span style={buttonStyle}>Update Bio</span>
                         <i className="material-icons">send</i>
                       </button>
                     </div>
@@ -138,6 +156,9 @@ export default class EditPage extends React.Component {
                 <form className="col s12">
                   <div className="container">
                     <div className="row card-panel white">
+                      <div className="tab-title" style={tabTitle}>
+                        Contact and Links
+                      </div>
                       <div className="input-field">
                         <div className="col s12 m4" style={linkTag}>
                           Email
@@ -201,7 +222,7 @@ export default class EditPage extends React.Component {
                       </div>
                       <div className="col s12">
                         <button className="btn waves-effect waves-light" type="submit" name="action">
-                          <span>Update Links</span>
+                          <span style={buttonStyle}>Update Links</span>
                           <i className="material-icons">send</i>
                         </button>
                       </div>
