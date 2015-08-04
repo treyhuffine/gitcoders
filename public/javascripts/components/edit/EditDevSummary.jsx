@@ -16,7 +16,7 @@ let buttonStyle = {
 export default class EditDevSummary extends React.Component {
   render() {
     return (
-      <form className="col s12">
+      <form className="col s12 edit-dev-summary">
         <div className="row">
           <div className="tab-title" style={tabTitle}>
             Developer Summary

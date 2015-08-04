@@ -5,6 +5,7 @@ var Tabs = require('react-simpletabs');
 import {Input} from 'react-bootstrap';
 
 import EditDevSummary from './EditDevSummary';
+import EditBio from './EditBio';
 
 let unauthedEdit = {
   'position': 'absolute',
@@ -74,33 +75,7 @@ export default class EditPage extends React.Component {
           <Tabs.Panel title='Profile Bio'>
             <div className="container" style={topBuffer}>
               <div className="row card-panel white">
-                <div className="row">
-                  <div className="tab-title" style={tabTitle}>
-                    Profile Tagline and Biography
-                  </div>
-                  <form className="col s12">
-                    <div className="col s12">
-                      <strong>Give yourself some personality with a unique tagline</strong>
-                    </div>
-                    <div className="input-field col s12">
-                      <input id="edit-tagline" type="text" className="validate" />
-                      <label htmlFor="edit-tagline">Tagline</label>
-                    </div>
-                    <div className="col s12">
-                      <strong>Brief description of yourself</strong>
-                    </div>
-                    <div className="input-field col s12">
-                      <textarea id="user-description" type="text" className="materialize-textarea validate" length="1000" maxlength="1000"></textarea>
-                      <label htmlFor="user-description">Bio / summary</label>
-                    </div>
-                    <div className="col s12">
-                      <button className="btn waves-effect waves-light" type="submit" name="action">
-                        <span style={buttonStyle}>Update Bio</span>
-                        <i className="material-icons">send</i>
-                      </button>
-                    </div>
-                  </form>
-                </div>
+                <EditBio />
               </div>
             </div>
           </Tabs.Panel>
