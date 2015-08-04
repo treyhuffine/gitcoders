@@ -9,19 +9,22 @@ import Landing from './components/Landing';
 import ProfilePage from './components/profile/ProfilePage';
 import AuthSession from './components/AuthSession';
 import LoginPage from './components/login/LoginPage';
+import EditPage from './components/edit/EditPage';
 
 function validate(nextState, transition) {
   console.log("~~~~~~~~~~~~~~~~~~~~~", nextState, transition);
+  console.log(nextState.params.username);
 }
 
 export default class Root extends React.Component {
   render() {
-  console.log(this);
+  console.log("$$$$$$$$$@@@@@@@@@@@@", this);
     return (
       <Router history={history}>
         <Route name="app" component={App}>
           <Route name="landing" path="/" component={Landing} />
           <Route name="profile" path="/git/:username" component={ProfilePage} />
+          <Route name="edit" path="/edit" component={EditPage} />
         </Route>
       </Router>
     );

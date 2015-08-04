@@ -1,4 +1,4 @@
-import $ from '../../vendor/jquery.min'
+import $ from '../../vendor/jquery.min';
 import React from 'react';
 import { Link } from 'react-router';
 
@@ -31,7 +31,7 @@ export default class NavGC extends React.Component {
             <a href="#" className="brand-logo" style={logoStyle}>gitcoders</a>
             <ul className="right hide-on-med-and-down">
               <li className="navButtons"><Link to={`/git/${username}`} style={navButtons}>View Profile</Link></li>
-              <li className="navButtons"><Link to={`/git/${username}`} style={navButtons}>Edit Profile</Link></li>
+              <li className="navButtons"><Link to={'edit'} style={navButtons}>Edit Profile</Link></li>
               <li className="navButtons"><a href="/auth/logout" style={navButtons}>Logout</a></li>
             </ul>
             <ul className="side-nav" id="mobile-demo">
