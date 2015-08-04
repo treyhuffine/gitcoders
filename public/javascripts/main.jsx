@@ -1,5 +1,4 @@
 import $ from './vendor/jquery.min';
-import ReactDOM from 'react-dom';
 import React from 'react';
 import Root from './Root';
 import API from './API';
@@ -10,5 +9,5 @@ const rootElement = document.getElementById('root');
 API.getCurrentUser();
 
 $(document).ready( () => {
-  ReactDOM.render(<Root />, rootElement)
+  React.render(<Root />, rootElement)
 })
