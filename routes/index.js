@@ -28,10 +28,28 @@ var routes = (passport, mongoose) => {
       }
 
       if (!user) {
-        // hit github api
+        // hit github api, res json if available or redirect home if not
       }
     })
   });
+  router.post('/user/:username/update', (req, res, next) => {
+    // console.log(req.body, req.params);
+    let User = require('../models/user');
+    User.findOneAndUpdate({ 'username': new RegExp('^'+req.params.username+'$', "i") }, req.body).exec( (err, user) =>  {
+      console.log(user);
+      if (err) {
+        res.status(400);
+      }
+
+      if (user) {
+        res.json(user)
+      }
+
+      if (!user) {
+        // hit github api
+      }
+    })
+  })
   router.get('/', (req, res, next) => {
     console.log(req.user);
     res.render('index', { currentUserData: req.user });

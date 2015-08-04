@@ -15,25 +15,33 @@ let buttonStyle = {
 }
 
 export default class EditBio extends React.Component {
+  updateUser(e) {
+    e.preventDefault();
+    console.log("REFS+=+=", this.refs);
+    let newAttributes = {}
+    let currentUser = this.props.userData.currentUser.username;
+    Object.keys(this.refs).forEach(key => newAttributes[key] = this.refs[key].getDOMNode().value);
+    UserActionsCreator.updateUserInfo(newAttributes, currentUser);
+  }
   render() {
     return (
       <div className="row edit-bio">
         <div className="tab-title" style={tabTitle}>
           Profile Tagline and Biography
         </div>
-        <form className="col s12">
+        <form className="col s12" onSubmit={this.updateUser.bind(this)}>
           <div className="col s12">
             <strong>Give yourself some personality with a unique tagline</strong>
           </div>
           <div className="input-field col s12">
-            <input id="edit-tagline" type="text" className="validate" />
+            <input id="edit-tagline" type="text" className="validate" ref="tagline"/>
             <label htmlFor="edit-tagline">Tagline</label>
           </div>
           <div className="col s12">
             <strong>Brief description of yourself</strong>
           </div>
           <div className="input-field col s12">
-            <textarea id="user-description" type="text" className="materialize-textarea validate" length="1000" maxlength="1000"></textarea>
+            <textarea id="user-description" type="text" className="materialize-textarea validate" length="1000" maxLength="1000" ref="bio"></textarea>
             <label htmlFor="user-description">Bio / summary</label>
           </div>
           <div className="col s12">

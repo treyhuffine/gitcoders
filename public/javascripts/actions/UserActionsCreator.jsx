@@ -1,5 +1,6 @@
-import AppDispatcher from "../dispatcher"
-import Actions from "../constants"
+import AppDispatcher from "../dispatcher";
+import Actions from "../constants";
+import API from '../API';
 
 export default {
   getCurrentUser(payload) {
@@ -14,7 +15,7 @@ export default {
       payload
     })
   },
-  updateUserInfo(info) {
-    API.updateUserInfo(info);
+  updateUserInfo(info, currentUser) {
+    API.updateUserInfo(info, currentUser);
   }
 }

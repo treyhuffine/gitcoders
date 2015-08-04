@@ -54,21 +54,21 @@ export default class EditPage extends React.Component {
           <Tabs.Panel title='Developer Summary'>
             <div className="container" style={topBuffer}>
               <div className="row card-panel white">
-                <EditDevSummary />
+                <EditDevSummary userData={this.state} />
               </div>
             </div>
           </Tabs.Panel>
           <Tabs.Panel title='Profile Bio'>
             <div className="container" style={topBuffer}>
               <div className="row card-panel white">
-                <EditBio />
+                <EditBio userData={this.state} />
               </div>
             </div>
           </Tabs.Panel>
           <Tabs.Panel title='Contact / Links'>
             <div className="container" style={topBuffer}>
               <div className="row">
-                <EditLinks />
+                <EditLinks userData={this.state} />
               </div>
             </div>
           </Tabs.Panel>

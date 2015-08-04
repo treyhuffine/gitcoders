@@ -23,9 +23,9 @@ export default {
       console.log(error);
     })
   },
-  updateUserInfo(info) {
-    var username = "treyhuffine";
-    $.post(`/user/${username}/update`, info)
+  updateUserInfo(info, currentUser) {
+    // var username = "treyhuffine";
+    $.post(`/user/${currentUser}/update`, info)
     .success(user => {
       console.log(user);
     })
