@@ -13,6 +13,7 @@ var userSchema = new mongoose.Schema({
   desiredLocation3: String,
   tagline: String,
   bio: String,
+  currentLocation: String,
   personalWebsite: String,
   email: String,
   blog: String,
