@@ -29,6 +29,13 @@ export default class EditDevSummary extends React.Component {
             <label htmlFor="user-title">Title (eg. Full stack developer, iOS Engineer, etc.)</label>
           </div>
           <div className="col s12">
+            <strong>Current location</strong>
+          </div>
+          <div className="input-field col s12">
+            <input id="user-title" type="text" className="validate" />
+            <label htmlFor="user-title">Location</label>
+          </div>
+          <div className="col s12">
             <strong>Top technologies (programming languages, frameworks, UI design, Photoshop, etc.)</strong>
           </div>
           <div className="input-field col m4 s12">
