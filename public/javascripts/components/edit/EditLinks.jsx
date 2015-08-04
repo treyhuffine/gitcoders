@@ -1,4 +1,5 @@
 import React from 'react';
+import UserActionsCreator from '../../actions/UserActionsCreator';
 
 let linkTag = {
   'marginTop': '17px'
@@ -17,9 +18,16 @@ let buttonStyle = {
 }
 
 export default class EditLinks extends React.Component {
+  updateUser(e) {
+    e.preventDefault();
+    let newAttributes = {}
+    let currentUser = this.props.userData.currentUser.username;
+    Object.keys(this.refs).forEach(key => newAttributes[key] = this.refs[key].getDOMNode().value);
+    UserActionsCreator.updateUserInfo(newAttributes, currentUser);
+  }
   render() {
     return (
-      <form className="col s12">
+      <form className="col s12" onSubmit={this.updateUser.bind(this)}>
         <div className="container">
           <div className="row card-panel white">
             <div className="tab-title" style={tabTitle}>
@@ -30,7 +38,7 @@ export default class EditLinks extends React.Component {
                 Email
               </div>
               <div className="col s12 m8">
-                <input id="edit-email" type="email" placeholder="Email" className="validate" required/>
+                <input id="edit-email" type="email" placeholder="Email" className="validate" ref="email" required/>
               </div>
             </div>
             <div className="input-field">
@@ -38,7 +46,7 @@ export default class EditLinks extends React.Component {
                 Personal website URL
               </div>
               <div className="col s12 m8">
-                <input id="edit-website" type="url" placeholder="Personal website"/>
+                <input id="edit-website" type="url" placeholder="Personal website" className="validate" ref="personalWebsite"/>
               </div>
             </div>
             <div className="input-field">
@@ -59,7 +67,7 @@ export default class EditLinks extends React.Component {
                 Blog URL
               </div>
               <div className="col s12 m8">
-                <input id="edit-blog" type="url" placeholder="Blog URL"/>
+                <input id="edit-blog" type="url" placeholder="Blog URL" className="validate" ref="blog"/>
               </div>
             </div>
             <div className="input-field">
@@ -67,7 +75,7 @@ export default class EditLinks extends React.Component {
                 Stackoverflow URL
               </div>
               <div className="col s12 m8">
-                <input id="edit-stackoverflow" type="url" placeholder="Stackoverflow"/>
+                <input id="edit-stackoverflow" type="url" placeholder="Stackoverflow" className="validate" ref="stackoverflow"/>
               </div>
             </div>
             <div className="input-field">
@@ -75,7 +83,7 @@ export default class EditLinks extends React.Component {
                 Twitter URL
               </div>
               <div className="col s12 m8">
-                <input id="edit-blog" type="url" placeholder="Twitter"/>
+                <input id="edit-blog" type="url" placeholder="Twitter" className="validate" ref="twitter"/>
               </div>
             </div>
             <div className="input-field">
@@ -83,7 +91,7 @@ export default class EditLinks extends React.Component {
                 LinkedIn Public URL
               </div>
               <div className="col s12 m8">
-                <input id="edit-linkedin" type="url" placeholder="LinkedIn (linkedin.com/in/:username)"/>
+                <input id="edit-linkedin" type="url" placeholder="LinkedIn (linkedin.com/in/:username)" className="validate" ref="linkedin"/>
               </div>
             </div>
             <div className="col s12">
