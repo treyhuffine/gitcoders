@@ -33,21 +33,19 @@ var routes = (passport, mongoose) => {
     })
   });
   router.post('/user/:username/update', (req, res, next) => {
-    // console.log(req.body, req.params);
+    console.log(req.body, req.params);
     let User = require('../models/user');
-    User.findOneAndUpdate({ 'username': new RegExp('^'+req.params.username+'$', "i") }, req.body).exec( (err, user) =>  {
+    User.findOneAndUpdate({ 'username': new RegExp('^'+req.params.username+'$', "i") }, req.body, {new: true}).exec( (err, user) =>  {
       console.log(user);
       if (err) {
         res.status(400);
+        return;
       }
-
-      if (user) {
-        res.json(user)
-      }
-
       if (!user) {
-        // hit github api
+        res.status404;
+        return;
       }
+      res.json(user)
     })
   })
   router.get('/', (req, res, next) => {
