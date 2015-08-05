@@ -3,7 +3,7 @@ var userSchema = new mongoose.Schema({
   githubID: String,
   githubData: Object,
   username: String,
-  token: String,
+  accessToken: String,
   devTitle: String,
   topTech1: String,
   topTech2: String,
@@ -19,9 +19,10 @@ var userSchema = new mongoose.Schema({
   blog: String,
   stackoverflow: String,
   twitter: String,
-  linkedin: String
+  linkedin: String,
+  updatedAt: { type: Date, default: Date.now, required: true },
+  repoList: { type: mongoose.Schema.ObjectId, ref: 'Repos'}
 });
 var User = mongoose.model('User', userSchema);
-
 
 module.exports = User;

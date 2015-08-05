@@ -1,5 +1,6 @@
 var GithubStrategy  = require('passport-github').Strategy;
 var User = require('../models/user');
+var Repos = require('../models/repos');
 var configAuth = require('./auth');
 var request = require('request');
 
@@ -34,7 +35,7 @@ module.exports = function(passport) {
 
           // if the user is found then log them in
           if (user) {
-            user.token = require('crypto').randomBytes(64).toString('hex');
+            user.accessToken = require('crypto').randomBytes(64).toString('hex');
             console.log(user);
             user.save( (err) => {
               if (err) {
@@ -43,7 +44,7 @@ module.exports = function(passport) {
               let userData = {
                 dbID: user.id,
                 username: user.githubData.login,
-                token: user.token
+                accessToken: user.accessToken
               }
               return done(null, userData);
             });
@@ -54,21 +55,55 @@ module.exports = function(passport) {
             newUser.githubID = profile._json.id;
             newUser.githubData = profile._json;
             newUser.username = profile._json.login;
-            newUser.token = require('crypto').randomBytes(64).toString('hex');
+            newUser.accessToken = require('crypto').randomBytes(64).toString('hex');
 
             // save our user into the database
-            newUser.save( (err) => {
-              if (err) {
-                throw err;
+            var requestOptions = {
+              url: `https://api.github.com/users/${newUser.username}/repos`,
+              headers: {
+                'User-Agent': newUser.username
               }
-              let userData = {
-                dbID: newUser.id,
-                username: newUser.githubData.login,
-                token: newUser.token
+            }
+            console.log("REPO URL------", `https://api.github.com/users/${newUser.username}/repos`);
+            request(requestOptions, (error, response, body) => {
+              console.log('REPOS!!!', typeof JSON.parse(body));
+              if (body.length > 0) {
+                var newRepos = new Repos();
+                newRepos.repoList = JSON.parse(body); 
+                console.log(newRepos.id);
+                newRepos.save( (err) => {
+                  if (err) {
+                    throw err;
+                  }
+                  newUser.repoList = newRepos.id;
+                  newUser.save( (err) => {
+                    if (err) {
+                      throw err;
+                    }
+                    let userData = {
+                      dbID: newUser.id,
+                      username: newUser.githubData.login,
+                      accessToken: newUser.accessToken
+                    }
+                    console.log('NEW USER', userData.username);
+                    return done(null, userData);
+                  })
+                });
+              } else {
+                newUser.save( (err) => {
+                  if (err) {
+                    throw err;
+                  }
+                  let userData = {
+                    dbID: newUser.id,
+                    username: newUser.githubData.login,
+                    accessToken: newUser.accessToken
+                  }
+                  console.log('NEW USER', userData.username);
+                  return done(null, userData);
+                });
               }
-              console.log(userData.username);
-              return done(null, userData);
-            });
+            })
           }
         });
       });
