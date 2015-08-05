@@ -1,6 +1,7 @@
 var routes = (passport, mongoose) => {
   var express = require('express');
   var router = express.Router();
+  var request = require('request');
 
   router.get('/auth/github', passport.authenticate('github'));
   router.get('/auth/callback/github',
@@ -32,6 +33,9 @@ var routes = (passport, mongoose) => {
       }
     })
   });
+  router.get('/user/:username/refreshgithub', (req, res, next) => {
+    res.json({message: 'Ahoy endpoint'});
+  });
   router.post('/user/:username/update', (req, res, next) => {
     console.log(req.body, req.params);
     let User = require('../models/user');
@@ -47,7 +51,7 @@ var routes = (passport, mongoose) => {
       }
       res.json(user)
     })
-  })
+  });
   router.get('/', (req, res, next) => {
     console.log(req.user);
     res.render('index', { currentUserData: req.user });

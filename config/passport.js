@@ -1,10 +1,7 @@
 var GithubStrategy  = require('passport-github').Strategy;
-
-// load up the user model
 var User = require('../models/user');
-
-// load the auth variables
 var configAuth = require('./auth');
+var request = require('request');
 
 module.exports = function(passport) {
 
@@ -38,6 +35,7 @@ module.exports = function(passport) {
           // if the user is found then log them in
           if (user) {
             user.token = require('crypto').randomBytes(64).toString('hex');
+            console.log(user);
             user.save( (err) => {
               if (err) {
                 throw err;
