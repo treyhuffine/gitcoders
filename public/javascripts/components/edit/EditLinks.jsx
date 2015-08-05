@@ -16,6 +16,12 @@ let buttonStyle = {
   'verticalAlign': 'top',
   'marginRight': '10px'
 }
+let httpReminder = {
+  'fontSize': '.7rem',
+  'color': 'rgb(135, 134, 134)',
+  'textAlign': 'center',
+  'marginBottom': '10px'
+}
 
 export default class EditLinks extends React.Component {
   updateUser(e) {
@@ -32,6 +38,9 @@ export default class EditLinks extends React.Component {
           <div className="row card-panel white">
             <div className="tab-title" style={tabTitle}>
               Contact and Links
+            </div>
+            <div className="http-reminder" style={httpReminder}>
+              (Don't forget the http:// or https:// for URL's)
             </div>
             <div className="input-field">
               <div className="col s12 m4" style={linkTag}>
