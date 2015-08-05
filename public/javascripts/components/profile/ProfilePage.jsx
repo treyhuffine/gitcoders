@@ -108,7 +108,7 @@ export default class Profile extends React.Component {
               <DeveloperSummary userData={this.state} />
             </div>
             <div className="card-panel white">
-              <UserBio />
+              <UserBio userData={this.state} />
             </div>
           </div>
         </div>
