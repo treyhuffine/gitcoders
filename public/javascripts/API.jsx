@@ -14,7 +14,7 @@ export default {
   },
   getUserProfile(username) {
     console.log("IN API", username);
-    $.get(`/userprofile/${username}`)
+    $.get(`/user/${username}`)
     .success(user => {
       console.log("PROFILE =======", user);
       ServerActionsCreator.getUserProfile(user);

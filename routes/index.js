@@ -15,7 +15,7 @@ var routes = (passport, mongoose) => {
     console.log("get user data", req.user);
     res.json(req.user);
   })
-  router.get('/userprofile/:username', (req, res, next) => {
+  router.get('/user/:username', (req, res, next) => {
     let User = require('../models/user');
     console.log(req.params.username);
     User.findOne({ 'username': new RegExp('^'+req.params.username+'$', "i") }).exec( (err, user) =>  {
