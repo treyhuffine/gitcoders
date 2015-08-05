@@ -33,7 +33,7 @@ export default class EditBio extends React.Component {
             <strong>Give yourself some personality with a unique tagline</strong>
           </div>
           <div className="input-field col s12">
-            <input id="edit-tagline" type="text" className="validate" ref="tagline"/>
+            <input id="edit-tagline" type="text" className="validate" ref="tagline" maxLength="140"/>
             <label htmlFor="edit-tagline">Tagline</label>
           </div>
           <div className="col s12">
