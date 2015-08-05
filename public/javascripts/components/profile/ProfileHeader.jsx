@@ -15,6 +15,7 @@ let userTitle = {
 
 export default class ProfileHeader extends React.Component {
   render() {
+  console.log(this.props);
     return (
       <div className="card-panel white">
         <div className="userTitle" style={userTitle}>
@@ -22,7 +23,7 @@ export default class ProfileHeader extends React.Component {
           <span style={usernameTag}>({this.props.userData.userProfile.username})</span>
         </div>
         <div className="tagline">
-          This is a user's tagline, it should be brief but give personality
+          {this.props.userData.userProfile.tagline}
         </div>
       </div>
     )
