@@ -62,9 +62,9 @@ export default class UserCard extends React.Component {
         <div>
           <div style={preferredLocation}><i className="material-icons" style={locationIcon}>my_location</i>Preferred Location</div>
           <ul style={ulStyle}>
-            <li style={liStyle}>Bay Area</li>
-            <li style={liStyle}>Seattle</li>
-            <li style={liStyle}>Austin</li>
+            <li style={liStyle}>{this.props.userData.userProfile.desiredLocation1}</li>
+            <li style={liStyle}>{this.props.userData.userProfile.desiredLocation2}</li>
+            <li style={liStyle}>{this.props.userData.userProfile.desiredLocation3}</li>
           </ul>
         </div>
       </div>
