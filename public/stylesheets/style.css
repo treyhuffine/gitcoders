@@ -1,8 +1,9 @@
 body, html {
   background-color: rgb(235, 235, 235);
+  font-weight: lighter !important;
 }
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px sans-serif, Helvetica, Arial;
 }
 
 a {
