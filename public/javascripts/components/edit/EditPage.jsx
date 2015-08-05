@@ -7,6 +7,7 @@ import {Input} from 'react-bootstrap';
 import EditDevSummary from './EditDevSummary';
 import EditBio from './EditBio';
 import EditLinks from './EditLinks';
+import EditProject from './EditProject';
 
 let unauthedEdit = {
   'position': 'absolute',
@@ -45,11 +46,7 @@ export default class EditPage extends React.Component {
       return (
         <Tabs>
           <Tabs.Panel title='Projects'>
-            <div className="container">
-              <div className="row">
-                PROJECTS
-              </div>
-            </div>
+            <EditProject userData={this.state} />
           </Tabs.Panel>
           <Tabs.Panel title='Developer Summary'>
             <div className="container" style={topBuffer}>
