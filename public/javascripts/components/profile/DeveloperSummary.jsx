@@ -18,11 +18,11 @@ export default class DeveloperSummary extends React.Component {
   render() {
     return (
       <div className="dev-summary">
-        <div style={devTitle}>Full Stack Developer</div>
+        <div style={devTitle}>{this.props.userData.userProfile.devTitle}</div>
         <ul style={ulStyle}>
-          <li style={liStyle}>JavaScript</li>
-          <li style={liStyle}>Mean Stack</li>
-          <li style={liStyle}>React</li>
+          <li style={liStyle}>{this.props.userData.userProfile.topTech1}</li>
+          <li style={liStyle}>{this.props.userData.userProfile.topTech2}</li>
+          <li style={liStyle}>{this.props.userData.userProfile.topTech3}</li>
         </ul>
         <div>Followers: {this.props.userData.userProfile.githubData.followers}</div>
         <div>Following: {this.props.userData.userProfile.githubData.following}</div>
