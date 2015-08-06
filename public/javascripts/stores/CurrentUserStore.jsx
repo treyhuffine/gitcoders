@@ -3,7 +3,12 @@ import Actions from "../constants";
 import AppEventEmitter from "./AppEventEmitter";
 import API from "../API"
 
-let _currentUser = {};
+let _currentUser = {
+  githubData: {},
+  repos: {
+    repoList: []
+  }
+};
 
 class UserEventEmitter extends AppEventEmitter {
   getCurrentUser() {
