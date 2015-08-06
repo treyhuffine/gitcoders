@@ -6,7 +6,9 @@ export default {
     $.get("/currentuser")
     .success(user => {
       console.log("++++ API ++++", user);
-      ServerActionsCreator.getCurrentUser(user)
+      let newUser = user.user;
+      newUser.repos = user.repos
+      ServerActionsCreator.getCurrentUser(newUser);
     })
     .error(error => {
       console.log(error);
