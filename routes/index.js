@@ -2,6 +2,7 @@ var routes = (passport, mongoose) => {
   var express = require('express');
   var router = express.Router();
   var request = require('request');
+  var Repos = require('../');
 
   router.get('/auth/github', passport.authenticate('github'));
   router.get('/auth/callback/github',

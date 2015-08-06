@@ -66,7 +66,6 @@ module.exports = function(passport) {
             }
             console.log("REPO URL------", `https://api.github.com/users/${newUser.username}/repos`);
             request(requestOptions, (error, response, body) => {
-              console.log('REPOS!!!', typeof JSON.parse(body));
               if (body.length > 0) {
                 var newRepos = new Repos();
                 newRepos.repoList = JSON.parse(body); 
