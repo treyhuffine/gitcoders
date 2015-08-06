@@ -15,18 +15,15 @@ var routes = (passport, mongoose) => {
   });
   router.get('/currentuser', (req, res, next) => {
     let Repos = require('../models/repos');
-    console.log(req.user.username);
     Repos.findOne({ 'username': new RegExp('^'+req.user.username+'$', "i") }, (err, repos) => {
       let newUser = {};
       newUser.user = req.user;
       newUser.repos = repos;
-      console.log(repos, "0000000");
       res.json(newUser);
     })
   });
   router.get('/user/:username', (req, res, next) => {
     let User = require('../models/user');
-    console.log(req.params.username);
     User.findOne({ 'username': new RegExp('^'+req.params.username+'$', "i") }).exec( (err, user) =>  {
       if (err) {
         res.status(400);

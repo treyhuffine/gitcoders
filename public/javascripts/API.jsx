@@ -5,7 +5,6 @@ export default {
   getCurrentUser() {
     $.get("/currentuser")
     .success(user => {
-      console.log("++++ API ++++", user);
       let newUser = user.user;
       newUser.repos = user.repos
       ServerActionsCreator.getCurrentUser(newUser);
@@ -18,7 +17,6 @@ export default {
     console.log("IN API", username);
     $.get(`/user/${username}`)
     .success(user => {
-      console.log("PROFILE =======", user);
       ServerActionsCreator.getUserProfile(user);
     })
     .error(error => {
@@ -26,7 +24,6 @@ export default {
     })
   },
   updateUserInfo(info, currentUser) {
-    // var username = "treyhuffine";
     $.post(`/user/${currentUser}/update`, info)
     .success(user => {
       console.log(user);
