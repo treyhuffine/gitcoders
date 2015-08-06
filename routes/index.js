@@ -2,21 +2,26 @@ var routes = (passport, mongoose) => {
   var express = require('express');
   var router = express.Router();
   var request = require('request');
-  var Repos = require('../');
 
   router.get('/auth/github', passport.authenticate('github'));
   router.get('/auth/callback/github',
     passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
-    res.redirect('/#/git/' + req.user.username);
-  });
+      res.redirect('/#/git/' + req.user.username);
+    }
+  );
   router.get('/auth/logout', (req, res, next) => {
     req.logout();
     res.redirect("/");
   });
   router.get('/currentuser', (req, res, next) => {
-    console.log("get user data", req.user);
-    res.json(req.user);
-  })
+    let Repos = require('../models/repos');
+    console.log(req.user.username);
+    Repos.findOne({username: req.user.username}, (err, repos) => {
+      req.user.repos = repos;
+      console.log("GET USER REPOS==++++", repos);
+      res.json(req.user);
+    })
+  });
   router.get('/user/:username', (req, res, next) => {
     let User = require('../models/user');
     console.log(req.params.username);
@@ -38,10 +43,8 @@ var routes = (passport, mongoose) => {
     res.json({message: 'Ahoy endpoint'});
   });
   router.post('/user/:username/update', (req, res, next) => {
-    console.log(req.body, req.params);
     let User = require('../models/user');
     User.findOneAndUpdate({ 'username': new RegExp('^'+req.params.username+'$', "i") }, req.body, {new: true}).exec( (err, user) =>  {
-      console.log(user);
       if (err) {
         res.status(400);
         return;
@@ -54,7 +57,6 @@ var routes = (passport, mongoose) => {
     })
   });
   router.get('/', (req, res, next) => {
-    console.log(req.user);
     res.render('index', { currentUserData: req.user });
   });
 

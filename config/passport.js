@@ -69,6 +69,7 @@ module.exports = function(passport) {
               if (body.length > 0) {
                 var newRepos = new Repos();
                 newRepos.repoList = JSON.parse(body); 
+                newRepos.username = newUser.username;
                 console.log(newRepos.id);
                 newRepos.save( (err) => {
                   if (err) {
