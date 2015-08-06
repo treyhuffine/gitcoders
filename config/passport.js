@@ -59,18 +59,16 @@ module.exports = function(passport) {
 
             // save our user into the database
             var requestOptions = {
-              url: `https://api.github.com/users/${newUser.username}/repos`,
+              url: `https://api.github.com/users/${newUser.username}/repos?per_page=100`,
               headers: {
                 'User-Agent': newUser.username
               }
             }
-            console.log("REPO URL------", `https://api.github.com/users/${newUser.username}/repos`);
             request(requestOptions, (error, response, body) => {
               if (body.length > 0) {
                 var newRepos = new Repos();
                 newRepos.repoList = JSON.parse(body); 
                 newRepos.username = newUser.username;
-                console.log(newRepos.id);
                 newRepos.save( (err) => {
                   if (err) {
                     throw err;
@@ -85,7 +83,6 @@ module.exports = function(passport) {
                       username: newUser.githubData.login,
                       accessToken: newUser.accessToken
                     }
-                    console.log('NEW USER', userData.username);
                     return done(null, userData);
                   })
                 });
