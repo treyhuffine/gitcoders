@@ -34,6 +34,7 @@ export default class EditProject extends React.Component {
     this.state = {repoList: this.props.userData.currentUser.repos.repoList};
     this.makeActiveRepo = this.makeActiveRepo.bind(this);
     this.makeInactiveRepo = this.makeInactiveRepo.bind(this);
+    this.filterWord = this.filterWord.bind(this);
   }
   makeActiveRepo(idx) {
     this.state.repoList[idx].isActive = true;
@@ -46,6 +47,9 @@ export default class EditProject extends React.Component {
     this.setState({
       repoList: this.state.repoList
     });
+  }
+  filterWord() {
+    this.setState({filteredWord: $("#filter-projects").val()})
   }
   render() {
     return (
@@ -72,12 +76,12 @@ export default class EditProject extends React.Component {
                 All Projects
               </div>
               <div className="col m8 s12 input-field" style={inputField}>
-                <input id="filter-projects" type="text" ref="filterProjects" placeholder="Start typing to filter..." style={searchBar} />
+                <input id="filter-projects" type="text" ref="filterProjects" placeholder="Start typing to filter..." style={searchBar} onKeyUp={this.filterWord}/>
               </div>
             </div>
             <div className="row">
               <div className="col m12 s12">
-                <AllProjectList allRepos={this.state.repoList} makeActiveRepo={this.makeActiveRepo} />
+                <AllProjectList allRepos={this.state.repoList} makeActiveRepo={this.makeActiveRepo} filteredWord={this.state.filteredWord || ""} />
               </div>
             </div>
           </div>
