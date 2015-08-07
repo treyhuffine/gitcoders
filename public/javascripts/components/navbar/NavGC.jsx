@@ -18,7 +18,7 @@ export default class NavGC extends React.Component {
   //   console.log(nextProps);
   // }
   render() {
-    if (!$.isEmptyObject(this.props.currentUser)) {
+    if (!$.isEmptyObject(this.props.currentUser.githubData)) {
       return (
         <AuthedNav currentUser={this.props.currentUser} />
       )

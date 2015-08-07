@@ -83,7 +83,7 @@ export default class EditProject extends React.Component {
             </div>
             <div className="row">
               <div className="col m12 s12">
-                <AllProjectList allRepos={this.props.userData.currentUser.repoList} />
+                <AllProjectList allRepos={this.props.userData.currentUser.repos.repoList} />
               </div>
             </div>
           </div>

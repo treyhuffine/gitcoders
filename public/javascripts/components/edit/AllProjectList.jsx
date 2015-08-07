@@ -1,33 +1,15 @@
 import React from 'react';
+import InactiveProject from './InactiveProject';
 
 export default class AllProjectList extends React.Component {
   render() {
+    let projects = this.props.allRepos.map( (repo, idx) => {
+      return <InactiveProject key={idx} />
+    })
+    console.log("ALL REPOS=+++", this.props);
     return (
       <ul className="collection z-depth-1">
-        <li className="collection-item avatar">
-          <i className="material-icons circle">folder</i>
-          <span className="title">Title</span>
-          <p>First Line <br/>
-             Second Line
-          </p>
-          <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
-        </li>
-        <li className="collection-item avatar">
-          <i className="material-icons circle green">insert_chart</i>
-          <span className="title">Title</span>
-          <p>First Line <br/>
-             Second Line
-          </p>
-          <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
-        </li>
-        <li className="collection-item avatar">
-          <i className="material-icons circle red">play_arrow</i>
-          <span className="title">Title</span>
-          <p>First Line <br/>
-             Second Line
-          </p>
-          <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
-        </li>
+        {projects}
       </ul>
     )
   }

@@ -42,7 +42,8 @@ export default class EditPage extends React.Component {
     CurrentUserStore.removeChangeListener(this.onStoreChange);
   }
   render() {
-    if (!$.isEmptyObject(this.state.currentUser)) {
+    console.log("STATE", this.state);
+    if (!$.isEmptyObject(this.state.currentUser.githubData)) {
       return (
         <Tabs>
           <Tabs.Panel title='Projects'>
