@@ -44,6 +44,12 @@ let iconSize = {
 export default class EditProject extends React.Component {
   constructor(props) {
     super(props);
+
+    let activeRepos = this.props.userData.currentUser.repos.isActive;
+    activeRepos.forEach( (el, idx) => {
+      this.props.userData.currentUser.repos.repoList[idx].isActive = true;
+    });
+
     this.state = {repoList: this.props.userData.currentUser.repos.repoList};
     this.makeActiveRepo = this.makeActiveRepo.bind(this);
     this.makeInactiveRepo = this.makeInactiveRepo.bind(this);
@@ -74,6 +80,7 @@ export default class EditProject extends React.Component {
         activeRepoIndex.push(idx);
       }
     })
+    console.log(activeRepoIndex, currentUser);
     API.updateActiveProjects(activeRepoIndex, currentUser);
   }
   render() {
