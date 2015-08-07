@@ -1,3 +1,4 @@
+import $ from '../../vendor/jquery.min';
 import React from 'react';
 import AllProjectList from './AllProjectList';
 import ActiveProjectList from './ActiveProjectList'
@@ -28,8 +29,24 @@ let searchBar = {
 }
 
 export default class EditProject extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {repoList: this.props.userData.currentUser.repos.repoList};
+    this.makeActiveRepo = this.makeActiveRepo.bind(this);
+    this.makeInactiveRepo = this.makeInactiveRepo.bind(this);
+  }
+  makeActiveRepo(idx) {
+    console.log(this.state);
+    console.log(idx);
+    this.state.repoList[idx].isActive = true;
+    this.setState({
+      repoList: this.state.repoList
+    });
+  }
+  makeInactiveRepo() {
+    console.log(this.state);
+  }
   render() {
-    console.log(this.props);
     return (
       <div className="row card-panel grey lighten-5" style={topBuffer}>
         <div className="project-wrapper">
@@ -44,7 +61,7 @@ export default class EditProject extends React.Component {
             </div>
             <div className="row">
               <div className="col m12 s12">
-                <ActiveProjectList />
+                <ActiveProjectList allRepos={this.state.repoList} />
               </div>
             </div>
           </div>
@@ -59,7 +76,7 @@ export default class EditProject extends React.Component {
             </div>
             <div className="row">
               <div className="col m12 s12">
-                <AllProjectList allRepos={this.props.userData.currentUser.repos.repoList} />
+                <AllProjectList allRepos={this.state.repoList} makeActiveRepo={this.makeActiveRepo} />
               </div>
             </div>
           </div>

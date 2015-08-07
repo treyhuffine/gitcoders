@@ -1,12 +1,12 @@
 import React from 'react';
-import InactiveProject from './InactiveProject';
+import SingleInactiveProject from './SingleInactiveProject';
 
 export default class AllProjectList extends React.Component {
   render() {
     let projects = [];
     this.props.allRepos.forEach( (repo, idx) => {
       if (!repo.isActive) {
-        projects.push( <InactiveProject key={idx} repoData={repo} /> );
+        projects.push( <SingleInactiveProject key={idx} repoData={repo} makeActiveRepo={this.props.makeActiveRepo} idx={idx} /> );
       }
     })
     console.log("ALL REPOS=+++", this.props);
