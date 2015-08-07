@@ -14,12 +14,15 @@ var routes = (passport, mongoose) => {
     res.redirect("/");
   });
   router.get('/currentuser', (req, res, next) => {
+    if (!req.user) {
+      res.json({message: "Please login"});
+    }
     let Repos = require('../models/repos');
     Repos.findOne({ 'username': new RegExp('^'+req.user.username+'$', "i") }, (err, repos) => {
-      let newUser = {};
-      newUser.user = req.user;
-      newUser.repos = repos;
-      res.json(newUser);
+      let fullUser = {};
+      fullUser.user = req.user;
+      fullUser.repos = repos;
+      res.json(fullUser);
     })
   });
   router.get('/user/:username', (req, res, next) => {

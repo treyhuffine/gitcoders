@@ -5,6 +5,9 @@ export default {
   getCurrentUser() {
     $.get("/currentuser")
     .success(user => {
+      if (user.message) {
+        return;
+      }
       let newUser = user.user;
       newUser.repos = user.repos
       ServerActionsCreator.getCurrentUser(newUser);
