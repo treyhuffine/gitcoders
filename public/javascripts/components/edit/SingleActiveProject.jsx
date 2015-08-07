@@ -19,6 +19,9 @@ let buttonStyle = {
   'paddingLeft': '10px',
   'paddingRight': '10px'
 }
+let buttonSpacing = {
+  'marginBottom': '7px'
+}
 
 export default class InactiveProject extends React.Component {
   constructor(props) {
@@ -39,7 +42,7 @@ export default class InactiveProject extends React.Component {
             <p><strong>Forks:</strong> {this.props.repoData.forks}  |  <strong>Watchers:</strong> {this.props.repoData.watchers}  |  <strong>Stars:</strong> {this.props.repoData.stargazers_count}</p>
           </div>
           <div className="col l4 m6 s6">
-            <span className="right">
+            <span className="right" style={buttonSpacing}>
               <button className="btn waves-effect waves-light blue" style={buttonStyle}>
                 <span style={buttonFont}>Edit Project</span>
                 <i className="material-icons" style={iconSize}>create</i>
