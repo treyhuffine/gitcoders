@@ -30,7 +30,7 @@ export default class Landing extends React.Component{
     CurrentUserStore.removeChangeListener(this.onStoreChange);
   }
   render() {
-    if ($.isEmptyObject(this.state.currentUser)) {
+    if ($.isEmptyObject(this.state.currentUser.githubData)) {
       return <LoginPage />
     } else {
       return <DashboardPage currentUser={this.state.currentUser} />

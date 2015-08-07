@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 import UnauthedNav from './UnauthedNav';
 import AuthedNav from './AuthedNav';
 
-
 export default class NavGC extends React.Component {
   // componentWillMount() {
   //   console.log("obj ppppppp",$.isEmptyObject(this.props.currentUser));

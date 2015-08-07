@@ -16,6 +16,7 @@ var routes = (passport, mongoose) => {
   router.get('/currentuser', (req, res, next) => {
     if (!req.user) {
       res.json({message: "Please login"});
+      return;
     }
     let Repos = require('../models/repos');
     Repos.findOne({ 'username': new RegExp('^'+req.user.username+'$', "i") }, (err, repos) => {
