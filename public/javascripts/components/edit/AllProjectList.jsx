@@ -8,6 +8,7 @@ export default class AllProjectList extends React.Component {
       if (!repo.isActive  && repo.name.match(this.props.filteredWord)) {
         projects.push( <SingleInactiveProject key={idx} repoData={repo} makeActiveRepo={this.props.makeActiveRepo} idx={idx} /> );
       }
+    })
     return (
       <ul className="collection z-depth-1">
         {projects}

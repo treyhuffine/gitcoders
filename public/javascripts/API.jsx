@@ -39,7 +39,7 @@ export default {
     console.log(projects, currentUser);
     $.ajax({
       url: `/user/${currentUser}/repos`,
-      content: projects,
+      data: {repos: projects},
       type: 'PUT'
     })
     .success(repos => {

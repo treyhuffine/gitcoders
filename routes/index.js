@@ -46,8 +46,22 @@ var routes = (passport, mongoose) => {
     res.json({message: 'Ahoy endpoint'});
   });
   router.put('/user/:username/repos', (req, res, next) => {
-    console.log(req.params, req.body);
-    res.json({message: 'hit patch'})
+    console.log(req.params, req.body, req.body['repos[]']);
+    let repoIndex = [];
+    req.body['repos[]'].forEach( (el, idx) => {
+      repoIndex.push(Number(el));
+    });
+    if (req.params.username.toLowerCase() === req.user.username.toLowerCase()) {
+      let Repos = require('../models/repos');
+      Repos.findOne({ 'username': new RegExp('^'+req.user.username+'$', "i") }, (err, repos) => {
+        repos.isActive = repoIndex;
+        repos.save();
+        res.json({message: "hit it"})
+      })
+    }
+    else {
+      req.json({message: "Sign in to save these repos"});
+    }
   })
   router.post('/user/:username/update', (req, res, next) => {
     let User = require('../models/user');
