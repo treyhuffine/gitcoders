@@ -34,5 +34,19 @@ export default {
     .error(error => {
       console.log(error);
     })
+  },
+  updateActiveProjects(projects, currentUser) {
+    console.log(projects, currentUser);
+    $.ajax({
+      url: `/user/${currentUser}/repos`,
+      content: projects,
+      type: 'PUT'
+    })
+    .success(repos => {
+      console.log(repos);
+    })
+    .error(error => {
+      console.log(error);
+    })
   }
 }

@@ -45,6 +45,10 @@ var routes = (passport, mongoose) => {
   router.get('/user/:username/refreshgithub', (req, res, next) => {
     res.json({message: 'Ahoy endpoint'});
   });
+  router.put('/user/:username/repos', (req, res, next) => {
+    console.log(req.params, req.body);
+    res.json({message: 'hit patch'})
+  })
   router.post('/user/:username/update', (req, res, next) => {
     let User = require('../models/user');
     User.findOneAndUpdate({ 'username': new RegExp('^'+req.params.username+'$', "i") }, req.body, {new: true}).exec( (err, user) =>  {

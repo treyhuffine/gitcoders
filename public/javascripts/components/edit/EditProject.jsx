@@ -1,7 +1,8 @@
 import $ from '../../vendor/jquery.min';
 import React from 'react';
 import AllProjectList from './AllProjectList';
-import ActiveProjectList from './ActiveProjectList'
+import ActiveProjectList from './ActiveProjectList';
+import API from '../../API';
 
 let topBuffer = {
   'marginTop': '30px',
@@ -27,6 +28,18 @@ let searchBar = {
   'height': '1.5rem',
   'marginBottom': '0'
 }
+let buttonStyle = {
+  'paddingLeft': '10px',
+  'paddingRight': '10px'
+}
+let buttonFont = {
+  'verticalAlign': 'top',
+  'marginRight': '10px',
+  'fontSize': '.7rem'
+}
+let iconSize = {
+  'fontSize': '.8rem'
+}
 
 export default class EditProject extends React.Component {
   constructor(props) {
@@ -35,6 +48,7 @@ export default class EditProject extends React.Component {
     this.makeActiveRepo = this.makeActiveRepo.bind(this);
     this.makeInactiveRepo = this.makeInactiveRepo.bind(this);
     this.filterWord = this.filterWord.bind(this);
+    this.saveProjects = this.saveProjects.bind(this);
   }
   makeActiveRepo(idx) {
     this.state.repoList[idx].isActive = true;
@@ -51,6 +65,11 @@ export default class EditProject extends React.Component {
   filterWord() {
     this.setState({filteredWord: $("#filter-projects").val()})
   }
+  saveProjects() {
+    let currentUser = this.props.userData.currentUser.username;
+    let repos = this.state.repoList;
+    API.updateActiveProjects(repos, currentUser);
+  }
   render() {
     return (
       <div className="row card-panel grey lighten-5" style={topBuffer}>
@@ -60,8 +79,14 @@ export default class EditProject extends React.Component {
           </div>
           <div className="col m6 s12 pending-projects">
             <div className="row">
-              <div className="col m12 s12" style={projectSection}>
+              <div className="col m8 s12" style={projectSection}>
                 Active Projects
+              </div>
+              <div className="col m4 s12">
+                <button className="btn waves-effect waves-light green" style={buttonStyle} onClick={this.saveProjects}>
+                  <span style={buttonFont}>Save Active</span>
+                  <i className="material-icons" style={iconSize}>done</i>
+                </button>
               </div>
             </div>
             <div className="row">
