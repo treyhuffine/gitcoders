@@ -6,7 +6,7 @@ export default class ActiveProjects extends React.Component {
     let projects = [];
     this.props.allRepos.forEach( (repo, idx) => {
       if (repo.isActive) {
-        projects.push( <SingleActiveProject key={idx} repoData={repo} makeActiveRepo={this.props.makeActiveRepo} idx={idx} /> );
+        projects.push( <SingleActiveProject key={idx} repoData={repo} makeInactiveRepo={this.props.makeInactiveRepo} idx={idx} /> );
       }
     })
     return (

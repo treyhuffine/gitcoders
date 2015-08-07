@@ -36,15 +36,16 @@ export default class EditProject extends React.Component {
     this.makeInactiveRepo = this.makeInactiveRepo.bind(this);
   }
   makeActiveRepo(idx) {
-    console.log(this.state);
-    console.log(idx);
     this.state.repoList[idx].isActive = true;
     this.setState({
       repoList: this.state.repoList
     });
   }
-  makeInactiveRepo() {
-    console.log(this.state);
+  makeInactiveRepo(idx) {
+    this.state.repoList[idx].isActive = false;
+    this.setState({
+      repoList: this.state.repoList
+    });
   }
   render() {
     return (
@@ -61,7 +62,7 @@ export default class EditProject extends React.Component {
             </div>
             <div className="row">
               <div className="col m12 s12">
-                <ActiveProjectList allRepos={this.state.repoList} />
+                <ActiveProjectList allRepos={this.state.repoList} makeInactiveRepo={this.makeInactiveRepo} />
               </div>
             </div>
           </div>

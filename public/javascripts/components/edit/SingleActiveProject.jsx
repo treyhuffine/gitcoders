@@ -21,6 +21,14 @@ let buttonStyle = {
 }
 
 export default class InactiveProject extends React.Component {
+  constructor(props) {
+    super(props);
+    this.localHandleClick = this.localHandleClick.bind(this);
+  }
+  localHandleClick() {
+    console.log(this.props.idx);
+    this.props.makeInactiveRepo(this.props.idx)
+  }
   render() {
     return (
       <li className="collection-item">
@@ -40,7 +48,7 @@ export default class InactiveProject extends React.Component {
           </div>
           <div className="col l4 m6 s6">
             <span className="right">
-              <button className="btn waves-effect waves-light red" style={buttonStyle}>
+              <button className="btn waves-effect waves-light red" style={buttonStyle} onClick={this.localHandleClick}>
                 <span style={buttonFont}>Make Inactive</span>
                 <i className="material-icons" style={iconSize}>clear</i>
               </button>
