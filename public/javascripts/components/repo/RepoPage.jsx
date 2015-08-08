@@ -1,4 +1,5 @@
 import React from 'react';
+var Tabs = require('react-simpletabs');
 import API from '../../API';
 
 import CurrentUserStore from '../../stores/CurrentUserStore';
@@ -9,6 +10,10 @@ let getCurrentUserFromStore = () => {
 }
 let getActiveRepoFromStore = () => {
   return { activeRepo: ActiveRepoStore.getActiveRepo() }
+}
+let topBuffer = {
+  'marginTop': '30px',
+  'marginBottom': '30px'
 }
 
 export default class RepoPage extends React.Component {
@@ -35,7 +40,14 @@ export default class RepoPage extends React.Component {
     console.log(this.state);
     return (
       <div className="active-repo-wrapper">
-        {this.state.activeRepo.repoOwner || "NAME"}
+        <Tabs>
+          <Tabs.Panel title='Edit Project'>
+            <h1>Hello word</h1>
+          </Tabs.Panel>
+          <Tabs.Panel title='Preview'>
+            <h1>Preview</h1>
+          </Tabs.Panel>
+        </Tabs>
       </div>
     )
   }
