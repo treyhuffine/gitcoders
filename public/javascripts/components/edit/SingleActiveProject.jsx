@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'react-router';
+import {Link} from 'react-router';
 
 let title = {
   'fontSize': '1.35rem'
