@@ -74,6 +74,7 @@ var routes = (passport, mongoose) => {
           // check if project exists already
           newProject.projectOrder = 1;
           newProject.projectId = repos.repoList[el].id;
+          newProject.repoOwner = req.user.username;
           newProject.save();
         });
         res.json({message: "hit it"});
@@ -95,6 +96,20 @@ var routes = (passport, mongoose) => {
         return;
       }
       res.json(user)
+    })
+  });
+  router.get('/repo/:repoid', (req, res, next) => {
+    let ActiveProjects = require('../models/activeprojects');
+    console.log(req.params, typeof req.params);
+    ActiveProjects.findOne( {projectId: req.params.repoid}, (err, repo) => {
+      console.log(repo);
+      if (!repo) {
+        res.redirect('/');
+      }
+      if (repo.repoOwner.toLowerCase() !== req.user.username.toLowerCase()) {
+        res.redirect('/');
+      }
+      res.json(repo);
     })
   });
   router.get('/', (req, res, next) => {

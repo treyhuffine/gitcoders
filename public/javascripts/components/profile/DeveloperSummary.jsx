@@ -18,7 +18,7 @@ export default class DeveloperSummary extends React.Component {
   render() {
     return (
       <div className="dev-summary">
-        <div style={devTitle}>{this.props.userData.userProfile.user.devTitle || "No title chosen"}</div>
+        <div style={devTitle}>{this.props.userData.userProfile.user.devTitle || "(No title chosen)"}</div>
         <ul style={ulStyle}>
           <li style={liStyle}>{this.props.userData.userProfile.user.topTech1 || 'N/A'}</li>
           <li style={liStyle}>{this.props.userData.userProfile.user.topTech2 || 'N/A'}</li>

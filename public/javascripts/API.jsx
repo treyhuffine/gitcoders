@@ -49,6 +49,11 @@ export default {
   },
   getActiveRepo(repoId) {
     $.get(`/repo/${repoId}`)
-
+    .success(repo => {
+      console.log(repo);
+    })
+    .error(error => {
+      console.log(error);
+    })
   }
 }

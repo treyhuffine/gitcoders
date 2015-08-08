@@ -29,7 +29,7 @@ let getUserProfileFromStore = () => {
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
-    let { params } = this.props
+    let { params } = this.props;
     console.log("PARAMS", params.username);
     API.getUserProfile(params.username);
     this.state = {
