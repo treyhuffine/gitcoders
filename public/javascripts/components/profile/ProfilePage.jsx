@@ -41,8 +41,7 @@ export default class Profile extends React.Component {
           repoList: []
         }
       },
-      currentUser: {},
-      repos: {}
+      currentUser: {}
     }
     this.onStoreChange = this.onStoreChange.bind(this);
     console.log("state$$$$$", this.state);
