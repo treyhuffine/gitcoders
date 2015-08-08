@@ -10,6 +10,7 @@ import ProfilePage from './components/profile/ProfilePage';
 import AuthSession from './components/AuthSession';
 import LoginPage from './components/login/LoginPage';
 import EditPage from './components/edit/EditPage';
+import RepoPage from './components/repo/RepoPage';
 
 function validate(nextState, transition) {
   console.log("~~~~~~~~~~~~~~~~~~~~~", nextState, transition);
@@ -25,6 +26,7 @@ export default class Root extends React.Component {
           <Route name="landing" path="/" component={Landing} />
           <Route name="profile" path="/git/:username" component={ProfilePage} />
           <Route name="edit" path="/edit" component={EditPage} />
+          <Route name="repo" path="/edit/:repoid" component={RepoPage} />
         </Route>
       </Router>
     );

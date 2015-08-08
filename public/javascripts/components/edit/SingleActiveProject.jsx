@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'react-router';
 
 let title = {
   'fontSize': '1.35rem'
@@ -33,6 +34,7 @@ export default class InactiveProject extends React.Component {
     this.props.makeInactiveRepo(this.props.idx)
   }
   render() {
+    console.log(this.props);
     return (
       <li className="collection-item">
         <div className="row">
@@ -43,10 +45,12 @@ export default class InactiveProject extends React.Component {
           </div>
           <div className="col l4 m6 s6">
             <span className="right" style={buttonSpacing}>
-              <button className="btn waves-effect waves-light blue" style={buttonStyle}>
-                <span style={buttonFont}>Edit Project</span>
-                <i className="material-icons" style={iconSize}>create</i>
-              </button>
+              <Link to={`/edit/${this.props.repoData.id}`}>
+                <button className="btn waves-effect waves-light blue" style={buttonStyle}>
+                  <span style={buttonFont}>Edit Project</span>
+                  <i className="material-icons" style={iconSize}>create</i>
+                </button>
+              </Link>
             </span>
           </div>
           <div className="col l4 m6 s6">

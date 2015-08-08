@@ -30,3 +30,8 @@ a {
 .tabs-menu, .tabs-navigation, .tabs-menu-item {
   background-color: #BBB9B9;
 }
+
+.gc-logo {
+  height: 40px;
+  margin-top: 10px;
+}

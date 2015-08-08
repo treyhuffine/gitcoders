@@ -8,7 +8,8 @@ var projectSchema = new mongoose.Schema({
   liveSiteLink: String,
   projectOrder: Number,
   projectId: String,
-  imageLinks: Array
+  imageLinks: Array,
+  repoOwner: String
 
 })
 var ActiveProjects = mongoose.model('ActiveProjects', projectSchema);
