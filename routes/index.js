@@ -64,10 +64,19 @@ var routes = (passport, mongoose) => {
     console.log(repoIndex);
     if (req.params.username.toLowerCase() === req.user.username.toLowerCase()) {
       let Repos = require('../models/repos');
+      let ActiveProjects = require('../models/activeprojects');
       Repos.findOne({ 'username': new RegExp('^'+req.user.username+'$', "i") }, (err, repos) => {
         repos.isActive = repoIndex;
         repos.save();
-        res.json({message: "hit it"})
+        repoIndex.forEach( (el, idx) => {
+          var newProject = new ActiveProjects();
+          newProject.projectData = repos.repoList[el];
+          // check if project exists already
+          newProject.projectOrder = 1;
+          newProject.projectId = repos.repoList[el].id;
+          newProject.save();
+        });
+        res.json({message: "hit it"});
       })
     }
     else {
