@@ -62,9 +62,9 @@ export default class EditLinks extends React.Component {
               <div className="col s12 m4" style={linkTag}>
                 Résumé
               </div>
-              <div className="col s12 m8">
+              <div className="col s12 m8" style={{'cursor': 'pointer'}}>
                 <div className="file-field">
-                  <input className="file-path validate" type="text" placeholder="Click this to upload file..."/>
+                  <input className="file-path validate" type="text" placeholder="Click here to upload file..."/>
                   <span>
                     <input type="file" />
                   </span>
