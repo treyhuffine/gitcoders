@@ -50,7 +50,7 @@ export default {
   getActiveRepo(repoId) {
     $.get(`/repo/${repoId}`)
     .success(repo => {
-      console.log(repo);
+      ServerActionsCreator.getActiveRepo(repo)
     })
     .error(error => {
       console.log(error);

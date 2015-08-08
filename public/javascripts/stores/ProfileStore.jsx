@@ -14,7 +14,6 @@ let _userProfile = {
 
 class ProfileEventEmitter extends AppEventEmitter {
   getUserProfile() {
-    console.log(_userProfile);
     return _userProfile;
   }
 }
@@ -24,9 +23,7 @@ let ProfileStore = new ProfileEventEmitter();
 AppDispatcher.register(action => {
   switch(action.actionType) {
     case Actions.GET_USER_PROFILE:
-      console.log("payload****", action.payload);
       _userProfile = action.payload;
-      console.log("GETTING USER PROFILE", _userProfile);
       ProfileStore.emitChange();
       break;
 

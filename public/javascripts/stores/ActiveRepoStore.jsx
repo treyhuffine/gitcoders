@@ -3,7 +3,11 @@ import Actions from "../constants";
 import AppEventEmitter from "./AppEventEmitter";
 import API from "../API";
 
-let _activeRepo = {}
+let _activeRepo = {
+  imageLink: [],
+  projectData: {},
+  technology: []
+}
 
 class ActiveRepoEventEmitter extends AppEventEmitter {
   getActiveRepo() {
@@ -16,9 +20,8 @@ let ActiveRepoStore = new ActiveRepoEventEmitter();
 AppDispatcher.register(action => {
   switch(action.actionType) {
     case Actions.GET_ACTIVE_REPO:
-      console.log("payload****", action.payload);
-      __activeRepo = action.payload;
-      console.log("GETTING USER", _activeRepo);
+      _activeRepo = action.payload;
+      console.log("GETTING REPO", _activeRepo);
       ActiveRepoStore.emitChange();
       break;
 

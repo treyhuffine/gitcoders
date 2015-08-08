@@ -100,14 +100,14 @@ var routes = (passport, mongoose) => {
   });
   router.get('/repo/:repoid', (req, res, next) => {
     let ActiveProjects = require('../models/activeprojects');
-    console.log(req.params, typeof req.params);
     ActiveProjects.findOne( {projectId: req.params.repoid}, (err, repo) => {
-      console.log(repo);
       if (!repo) {
-        res.redirect('/');
+        res.redirect('/#/');
+        return;
       }
-      if (repo.repoOwner.toLowerCase() !== req.user.username.toLowerCase()) {
-        res.redirect('/');
+      if (!req.user || repo.repoOwner.toLowerCase() !== req.user.username.toLowerCase()) {
+        res.redirect('/#/');
+        return;
       }
       res.json(repo);
     })

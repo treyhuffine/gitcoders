@@ -30,7 +30,6 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     let { params } = this.props;
-    console.log("PARAMS", params.username);
     API.getUserProfile(params.username);
     this.state = {
       userProfile: {
@@ -44,17 +43,14 @@ export default class Profile extends React.Component {
       currentUser: {}
     }
     this.onStoreChange = this.onStoreChange.bind(this);
-    console.log("state$$$$$", this.state);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
     this.setState(getUserProfileFromStore());
     let activeRepos = this.state.userProfile.repos.isActive || [];
     activeRepos.forEach( (el, idx) => {
-      console.log(el, idx);
       this.state.userProfile.repos.repoList[el].isActive = true;
     });
-    console.log(this.state);
     this.setState(this.state);
   }
   componentWillMount() {
@@ -69,8 +65,6 @@ export default class Profile extends React.Component {
   render() {
     const { params } = this.props;
     const username = parseUsername(params);
-    console.log(username);
-    console.log(this.state);
     let gitContent = this.state.userProfile;
     return (
       <div className="profile-container">
