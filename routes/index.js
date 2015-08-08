@@ -34,7 +34,15 @@ var routes = (passport, mongoose) => {
       }
 
       if (user) {
-        res.json(user)
+        // res.json(user)
+        let Repos = require('../models/repos');
+        Repos.findOne({ 'username': new RegExp('^'+user.username+'$', "i") }, (err, repos) => {
+          let fullUser = {};
+          fullUser.user = user;
+          fullUser.repos = repos;
+          console.log(fullUser.user);
+          res.json(fullUser);
+        })
       }
 
       if (!user) {

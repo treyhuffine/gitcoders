@@ -7,6 +7,7 @@ import UserCard from './UserCard';
 import ProfileHeader from './ProfileHeader';
 import DeveloperSummary from './DeveloperSummary';
 import UserBio from './UserBio';
+import ActiveProjectList from '../edit/ActiveProjectList';
 
 function parseUsername(params) {
   return params.username;
@@ -33,9 +34,15 @@ export default class Profile extends React.Component {
     API.getUserProfile(params.username);
     this.state = {
       userProfile: {
-        githubData: {}
+        user: {
+          githubData: {}
+        },
+        repos: {
+          repoList: []
+        }
       },
-      currentUser: {}
+      currentUser: {},
+      repos: {}
     }
     this.onStoreChange = this.onStoreChange.bind(this);
     console.log("state$$$$$", this.state);
@@ -43,7 +50,12 @@ export default class Profile extends React.Component {
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
     this.setState(getUserProfileFromStore());
-    console.log("change", this.state);
+    let activeRepos = this.state.repos.isActive || [];
+    activeRepos.forEach( (el, idx) => {
+      this.state.repos.repoList[idx].isActive = true;
+    });
+    console.log(this.state);
+    this.setState(this.state);
   }
   componentWillMount() {
     requestData(this.props);
@@ -69,38 +81,7 @@ export default class Profile extends React.Component {
           <div className="col s12 m6">
             <ProfileHeader userData={this.state}/>
             <ul className="collection z-depth-1">
-              <li className="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" className="circle" />
-                <span className="title">Title</span>
-                <p>First Line <br/>
-                   Second Line
-                </p>
-                <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
-              </li>
-              <li className="collection-item avatar">
-                <i className="material-icons circle">folder</i>
-                <span className="title">Title</span>
-                <p>First Line <br/>
-                   Second Line
-                </p>
-                <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
-              </li>
-              <li className="collection-item avatar">
-                <i className="material-icons circle green">insert_chart</i>
-                <span className="title">Title</span>
-                <p>First Line <br/>
-                   Second Line
-                </p>
-                <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
-              </li>
-              <li className="collection-item avatar">
-                <i className="material-icons circle red">play_arrow</i>
-                <span className="title">Title</span>
-                <p>First Line <br/>
-                   Second Line
-                </p>
-                <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
-              </li>
+              <ActiveProjectList allRepos={this.state.repos.repoList || []} makeInactiveRepo={function(){}} />
             </ul>
           </div>
           <div className="col s12 m3">

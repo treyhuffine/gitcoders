@@ -4,7 +4,12 @@ import AppEventEmitter from "./AppEventEmitter";
 import API from "../API"
 
 let _userProfile = {
-  githubData: {}
+  user: {
+    githubData: {}
+  },
+  repos: {
+    repoList: []
+  }
 };
 
 class ProfileEventEmitter extends AppEventEmitter {
@@ -21,7 +26,7 @@ AppDispatcher.register(action => {
     case Actions.GET_USER_PROFILE:
       console.log("payload****", action.payload);
       _userProfile = action.payload;
-      console.log("GETTING USER", _userProfile);
+      console.log("GETTING USER PROFILE", _userProfile);
       ProfileStore.emitChange();
       break;
 

@@ -44,27 +44,28 @@ let anchorStyle = {
 
 export default class UserCard extends React.Component {
   render() {
+  console.log(this.props);
     return (
       <div className="card-panel white">
         <div>
-          <img src={this.props.userData.userProfile.githubData.avatar_url} alt="user" style={userImage} className="z-depth-1"/>
-          <div style={currentLocation}><i className="tiny material-icons" style={matLocation}>location_on</i>{this.props.userData.userProfile.githubData.location}</div>
+          <img src={this.props.userData.userProfile.user.githubData.avatar_url} alt="user" style={userImage} className="z-depth-1"/>
+          <div style={currentLocation}><i className="tiny material-icons" style={matLocation}>location_on</i>{this.props.userData.userProfile.user.githubData.location}</div>
         </div>
         <div>
           <ul className="collection">
-            <li className="collection-item user-link waves-effect"><a href={"mailto:"+this.props.userData.userProfile.email} style={anchorStyle}><i className="material-icons" style={matIcon}>email</i><span>Email</span></a></li>
-            <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.personalWebsite} style={anchorStyle}><i className="material-icons" style={matIcon}>description</i><span>Résumé</span></a></li>
-            <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.personalWebsite} style={anchorStyle}><i className="material-icons" style={matIcon}>perm_identity</i><span>Personal Website</span></a></li>
-            <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.blog} style={anchorStyle}><i className="material-icons" style={matIcon}>message</i><span>Blog</span></a></li>
+            <li className="collection-item user-link waves-effect"><a href={"mailto:"+this.props.userData.userProfile.user.email} style={anchorStyle}><i className="material-icons" style={matIcon}>email</i><span>Email</span></a></li>
+            <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.user.personalWebsite} style={anchorStyle}><i className="material-icons" style={matIcon}>description</i><span>Résumé</span></a></li>
+            <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.user.personalWebsite} style={anchorStyle}><i className="material-icons" style={matIcon}>perm_identity</i><span>Personal Website</span></a></li>
+            <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.user.blog} style={anchorStyle}><i className="material-icons" style={matIcon}>message</i><span>Blog</span></a></li>
             <li className="collection-item user-link waves-effect"><i className="material-icons" style={matIcon}>assessment</i><span>Chat on Gitter</span></li>
           </ul>
         </div>
         <div>
           <div style={preferredLocation}><i className="material-icons" style={locationIcon}>my_location</i>Preferred Location</div>
           <ul style={ulStyle}>
-            <li style={liStyle}>{this.props.userData.userProfile.desiredLocation1}</li>
-            <li style={liStyle}>{this.props.userData.userProfile.desiredLocation2}</li>
-            <li style={liStyle}>{this.props.userData.userProfile.desiredLocation3}</li>
+            <li style={liStyle}>{this.props.userData.userProfile.user.desiredLocation1 || 'N/A'}</li>
+            <li style={liStyle}>{this.props.userData.userProfile.user.desiredLocation2 || 'N/A'}</li>
+            <li style={liStyle}>{this.props.userData.userProfile.user.desiredLocation3 || 'N/A'}</li>
           </ul>
         </div>
       </div>

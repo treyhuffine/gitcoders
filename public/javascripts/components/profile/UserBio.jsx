@@ -13,7 +13,7 @@ export default class UserBio extends React.Component {
       <div className="profile-bio">
         <div style={bioTitle}>Bio</div>
         <div>
-          {this.props.userData.userProfile.bio}
+          {this.props.userData.userProfile.user.bio || 'No user bio'}
         </div>
       </div>
     )

@@ -19,11 +19,11 @@ export default class ProfileHeader extends React.Component {
     return (
       <div className="card-panel white">
         <div className="userTitle" style={userTitle}>
-          <span style={name}>{this.props.userData.userProfile.githubData.name} </span>
-          <span style={usernameTag}>({this.props.userData.userProfile.username})</span>
+          <span style={name}>{this.props.userData.userProfile.user.githubData.name} </span>
+          <span style={usernameTag}>({this.props.userData.userProfile.user.username})</span>
         </div>
         <div className="tagline">
-          {this.props.userData.userProfile.tagline}
+          {this.props.userData.userProfile.user.tagline}
         </div>
       </div>
     )
