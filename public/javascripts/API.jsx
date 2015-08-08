@@ -17,7 +17,6 @@ export default {
     })
   },
   getUserProfile(username) {
-    console.log("IN API", username);
     $.get(`/user/${username}`)
     .success(user => {
       ServerActionsCreator.getUserProfile(user);
@@ -36,7 +35,6 @@ export default {
     })
   },
   updateActiveProjects(projects, currentUser) {
-    console.log(projects, currentUser);
     $.ajax({
       url: `/user/${currentUser}/repos`,
       data: {repos: projects},
@@ -48,5 +46,9 @@ export default {
     .error(error => {
       console.log(error);
     })
+  },
+  getActiveRepo(repoId) {
+    $.get(`/repo/${repoId}`)
+
   }
 }

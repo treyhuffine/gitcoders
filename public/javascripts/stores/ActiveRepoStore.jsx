@@ -3,29 +3,23 @@ import Actions from "../constants";
 import AppEventEmitter from "./AppEventEmitter";
 import API from "../API";
 
-let _currentUser = {
-  githubData: {},
-  repos: {
-    repoList: []
-  }
-};
+let _activeRepo = {}
 
-class UserEventEmitter extends AppEventEmitter {
-  getCurrentUser() {
-    console.log(_currentUser);
-    return _currentUser;
+class ActiveRepoEventEmitter extends AppEventEmitter {
+  getActiveRepo() {
+    return _activeRepo;
   }
 }
 
-let UserStore = new UserEventEmitter();
+let ActiveRepoStore = new ActiveRepoEventEmitter();
 
 AppDispatcher.register(action => {
   switch(action.actionType) {
-    case Actions.GET_CURRENT_USER:
+    case Actions.GET_ACTIVE_REPO:
       console.log("payload****", action.payload);
-      _currentUser = action.payload;
-      console.log("GETTING USER", _currentUser);
-      UserStore.emitChange();
+      __activeRepo = action.payload;
+      console.log("GETTING USER", _activeRepo);
+      ActiveRepoStore.emitChange();
       break;
 
     // case Actions.ADD_NEW_RESOURCE:
@@ -43,4 +37,4 @@ AppDispatcher.register(action => {
   }
 });
 
-export default UserStore;
+export default ActiveRepoStore;

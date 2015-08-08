@@ -13,5 +13,11 @@ export default {
       actionType: Actions.GET_USER_PROFILE,
       payload
     })
+  },
+  getActiveRepo(payload) {
+    AppDispatcher.dispatch({
+      actionType: Actions.GET_ACTIVE_REPO,
+      payload
+    })
   }
 }
