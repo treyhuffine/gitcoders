@@ -35,7 +35,6 @@ export default {
     })
   },
   updateActiveProjects(projects, currentUser) {
-    console.log(projects);
     $.ajax({
       url: `/user/${currentUser}/repos`,
       data: {repos: projects},
