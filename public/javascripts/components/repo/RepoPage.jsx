@@ -20,7 +20,6 @@ let tabTitle = {
   'fontSize': '2rem',
   'color': 'rgb(180, 180, 180)',
   'borderBottom': '1px solid rgb(180, 180, 180)',
-  'textAlign': 'center',
   'marginBottom': '15px',
   'paddingBottom': '15px'
 }
@@ -45,6 +44,18 @@ let smallSpacer = {
 let borderSeperator = {
   'borderRight': '1px solid #B4B4B4',
   'borderLeft': '1px solid #B4B4B4'
+}
+let buttonStyle = {
+  'verticalAlign': 'top',
+  'width': '150px'
+}
+let buttonFont = {
+  'verticalAlign': 'top',
+  'marginRight': '10px',
+  'fontSize': '.7rem'
+}
+let iconSize = {
+  'fontSize': '.8rem'
 }
 
 export default class RepoPage extends React.Component {
@@ -75,8 +86,14 @@ export default class RepoPage extends React.Component {
           <Tabs.Panel title='Edit Project'>
 
             <div className="row card-panel white" style={topBuffer}>
-              <div className="tab-title col m12 s12" style={tabTitle}>
-                Edit Project
+              <div className="tab-title col m12 s12">
+                <button className="btn waves-effect waves-light green right" style={buttonStyle} onClick={this.saveProjects}>
+                  <span style={buttonFont}>Save Active</span>
+                  <i className="material-icons" style={iconSize}>done</i>
+                </button>
+                <div style={tabTitle}>
+                  Edit Project
+                </div>
               </div>
               <div className="col m4 s12">
                 <div className="row">
@@ -103,7 +120,7 @@ export default class RepoPage extends React.Component {
                   </div>
                   <div className="git-url">
                     <div className="col s12 m12" style={bottomBuffer}>
-                      <a href={`${this.state.activeRepo.projectData.url}`}>GitHub Repo URL</a>
+                      <a href={`${this.state.activeRepo.projectData.svn_url}`}>GitHub Repo URL</a>
                     </div>
                   </div>
                   <div className="col s12">
@@ -138,8 +155,8 @@ export default class RepoPage extends React.Component {
                     <strong>Programming Languages</strong>
                   </div>
                   <div className="input-field col s12">
-                    <input id="new-language" type="text" ref="newLanguage" />
-                    <label htmlFor="newLanguage">Add additional language</label>
+                    <input id="new-language" type="text" ref="new-language" />
+                    <label htmlFor="new-language">Add additional language</label>
                   </div>
                   <div className="col s12 m12" style={smallSpacer}>
                     GitHub Default (added automatically): {`${this.state.activeRepo.projectData.language}`}
@@ -148,12 +165,12 @@ export default class RepoPage extends React.Component {
                     <strong>Tech</strong>
                   </div>
                   <div className="input-field col s12 m6">
-                    <input id="new-tech" type="text" ref="newTech" />
-                    <label htmlFor="newTech">Tech</label>
+                    <input id="new-tech" type="text" ref="new-tech" />
+                    <label htmlFor="new-tech">Tech</label>
                   </div>
                   <div className="input-field col s12 m6">
-                    <input id="tech-version" type="text" ref="techVersion" />
-                    <label htmlFor="techVersion">Version (optional)</label>
+                    <input id="tech-version" type="text" ref="tech-version" />
+                    <label htmlFor="tech-version">Version (optional)</label>
                   </div>
                 </div>
               </div>
