@@ -11,7 +11,6 @@ let navButtons ={
 
 export default class AuthedNav extends React.Component {
   render() {
-    console.log(this.props);
     let username = this.props.currentUser.githubData.login;
     return (
       <nav>

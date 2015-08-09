@@ -15,7 +15,6 @@ let userTitle = {
 
 export default class ProfileHeader extends React.Component {
   render() {
-  console.log(this.props);
     return (
       <div className="card-panel white">
         <div className="userTitle" style={userTitle}>

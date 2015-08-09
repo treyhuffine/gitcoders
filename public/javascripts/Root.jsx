@@ -19,7 +19,6 @@ function validate(nextState, transition) {
 
 export default class Root extends React.Component {
   render() {
-  console.log("$$$$$$$$$@@@@@@@@@@@@", this);
     return (
       <Router history={history}>
         <Route name="app" component={App}>
