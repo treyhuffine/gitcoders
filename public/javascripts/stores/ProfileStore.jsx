@@ -27,16 +27,6 @@ AppDispatcher.register(action => {
       ProfileStore.emitChange();
       break;
 
-    // case Actions.ADD_NEW_RESOURCE:
-    //   _resources.push(action.resource);
-    //   ResourceStore.emitChange();
-    //   break;
-    //
-    // case Actions.DELETE_RESOURCE:
-    //   _resources.splice(action.resourceIndex, 1);
-    //   ResourceStore.emitChange();
-    //   break;
-
     default:
     // do nothing
   }

@@ -63,6 +63,7 @@ export default class Profile extends React.Component {
     const { params } = this.props;
     const username = parseUsername(params);
     let gitContent = this.state.userProfile;
+    console.log(this.state);
     return (
       <div className="profile-container">
         <div className="row">

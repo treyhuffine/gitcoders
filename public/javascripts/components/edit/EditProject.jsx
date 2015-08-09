@@ -89,7 +89,7 @@ export default class EditProject extends React.Component {
           <div className="tab-title col m12 s12" style={tabTitle}>
             Edit Projects
           </div>
-          <div className="col m6 s12 pending-projects">
+          <div className="col l6 m12 s12 pending-projects">
             <div className="row">
               <div className="col m8 s12" style={projectSection}>
                 Active Projects
@@ -107,7 +107,7 @@ export default class EditProject extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col m6 s12 pending-projects">
+          <div className="col l6 m12 s12 pending-projects">
             <div className="row">
               <div className="col m4 s12" style={projectSection}>
                 All Projects
