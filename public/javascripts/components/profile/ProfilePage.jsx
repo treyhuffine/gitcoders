@@ -7,7 +7,7 @@ import UserCard from './UserCard';
 import ProfileHeader from './ProfileHeader';
 import DeveloperSummary from './DeveloperSummary';
 import UserBio from './UserBio';
-import ActiveProjectList from '../edit/ActiveProjectList';
+import ActiveProjectCardList from './ActiveProjectCardList';
 
 function parseUsername(params) {
   return params.username;
@@ -15,9 +15,6 @@ function parseUsername(params) {
 function requestData(props) {
   const { params } = props;
   const userUsername = parseUsername(params);
-
-  // UserActionCreators.requestUser(userLogin, ['name', 'avatarUrl']);
-  // RepoActionCreators.requestStarredReposPage(userLogin, true);
 }
 let getCurrentUserFromStore = () => {
   return { currentUser: CurrentUserStore.getCurrentUser() };
@@ -74,7 +71,7 @@ export default class Profile extends React.Component {
           </div>
           <div className="col s12 m6">
             <ProfileHeader userData={this.state}/>
-            <ActiveProjectList allRepos={this.state.userProfile.repos.repoList || []} makeInactiveRepo={function(){}} />
+            <ActiveProjectCardList allRepos={this.state.userProfile.repos.repoList || []} />
           </div>
           <div className="col s12 m3">
             <div className="card-panel white">
