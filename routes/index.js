@@ -56,7 +56,7 @@ var routes = (passport, mongoose) => {
     console.log("EDNPOINT",typeof req.body);
     let repoIndex = [];
     let allRepos = (typeof req.body['repos[]'] === 'string' ? [ req.body['repos[]'] ] : req.body['repos[]']);
-    console.log(allRepos);
+    console.log('all repos', allRepos);
     allRepos.forEach( (el, idx) => {
       repoIndex.push(Number(el));
     });
@@ -66,25 +66,30 @@ var routes = (passport, mongoose) => {
       Repos.findOne({ 'username': new RegExp('^'+req.user.username+'$', "i") }, (err, repos) => {
         repos.isActive = repoIndex;
         repos.save();
+        console.log('active', repos.isActive);
         ActiveProjects.find({ 'repoOwner': new RegExp('^'+req.user.username+'$', "i") }, (err, allActiveProjects) => {
           let activeIds = []
           repoIndex.forEach( (el, idx) => {
             activeIds.push(repos.repoList[el].id);
           })
-          console.log(activeIds);
+          console.log('start loop', activeIds, repoIndex);
           allActiveProjects.forEach( (el, idx) => {
-            console.log(el);
-            if (activeIds.indexOf(el.projectId) > -1) {
-              activeId.splice(activeId[indexOf(el.projectId)], 1); // delete entry here
+            console.log(activeIds, activeIds.indexOf(Number(el.projectId)));
+            if (activeIds.indexOf(Number(el.projectId)) > -1) {
+              activeIds.splice(activeIds.indexOf(Number(el.projectId)), 1);
+              repoIndex.splice(activeIds.indexOf(Number(el.projectId)), 1); // delete entry here
             } else {
               el.remove();
             }
           })
-          activeIds.forEach( (el, idx) => {
+          console.log('end loop', repoIndex);
+          // console.log(repos.repoList[0]);
+          repoIndex.forEach( (el, idx) => {
             var newProject = new ActiveProjects();
             newProject.projectData = repos.repoList[el];
             // check if project exists already
             newProject.projectOrder = 1;
+            // console.log(el, repos.repoList[el]);
             newProject.projectId = repos.repoList[el].id;
             newProject.repoOwner = req.user.username;
             newProject.save();
