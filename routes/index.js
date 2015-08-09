@@ -57,9 +57,11 @@ var routes = (passport, mongoose) => {
     let repoIndex = [];
     let allRepos = (typeof req.body['repos[]'] === 'string' ? [ req.body['repos[]'] ] : req.body['repos[]']);
     console.log('all repos', allRepos);
-    allRepos.forEach( (el, idx) => {
-      repoIndex.push(Number(el));
-    });
+    if (allRepos) {
+      allRepos.forEach( (el, idx) => {
+        repoIndex.push(Number(el));
+      });
+    }
     if (req.params.username.toLowerCase() === req.user.username.toLowerCase()) {
       let Repos = require('../models/repos');
       let ActiveProjects = require('../models/activeprojects');
