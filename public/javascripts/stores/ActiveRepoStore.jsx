@@ -6,7 +6,7 @@ import API from "../API";
 let _activeRepo = {
   imageLinks: [],
   projectData: {},
-  technology: {},
+  technology: [],
   languages: []
 }
 

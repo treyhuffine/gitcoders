@@ -66,6 +66,8 @@ export default class RepoPage extends React.Component {
     this.onStoreChange = this.onStoreChange.bind(this);
     this.addNewLanguage = this.addNewLanguage.bind(this);
     this.removeLanguage = this.removeLanguage.bind(this);
+    this.addNewTechnology = this.addNewTechnology.bind(this);
+    this.removeTechnology = this.removeTechnology.bind(this);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
@@ -81,15 +83,29 @@ export default class RepoPage extends React.Component {
   }
   addNewLanguage(e) {
     if (e.keyCode === 13 && $('#new-language').val()) {
-      this.state.activeRepo.languages.push($('#new-language').val());
+      this.state.activeRepo.languages.push($('#new-language').val().trim());
       $('#new-language').val('');
       this.setState(this.state);
       console.log(this.state);
     }
   }
+  addNewTechnology(e) {
+    if (e.keyCode === 13 && $('#new-tech').val()) {
+      this.state.activeRepo.technology.push( ($('#new-tech').val().trim() + ' ' + $('#tech-version').val().trim()).trim() );
+      $('#new-tech').val('');
+      $('#tech-version').val('');
+      this.setState(this.state);
+    }
+  }
   removeLanguage(idx) {
     console.log(idx);
     this.state.activeRepo.languages.splice(idx, 1);
+    this.setState(this.state);
+  }
+  removeTechnology(idx) {
+    console.log(idx);
+    console.log(this.state);
+    this.state.activeRepo.technology.splice(idx, 1);
     this.setState(this.state);
   }
   render() {
@@ -161,7 +177,14 @@ export default class RepoPage extends React.Component {
                 </div>
               </div>
               <div className="col l4 m12 s12">
-                <ProjectTech addNewLanguage={this.addNewLanguage} removeLanguage={this.removeLanguage} languages={this.state.activeRepo.languages} defaultLanguage={this.state.activeRepo.projectData.language} />
+                <ProjectTech addNewLanguage={this.addNewLanguage}
+                             removeLanguage={this.removeLanguage}
+                             languages={this.state.activeRepo.languages}
+                             defaultLanguage={this.state.activeRepo.projectData.language}
+                             addNewTechnology={this.addNewTechnology}
+                             removeTechnology={this.removeTechnology}
+                             technology={this.state.activeRepo.technology}
+                />
               </div>
             </div>
           </Tabs.Panel>

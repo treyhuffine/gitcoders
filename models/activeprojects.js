@@ -3,7 +3,7 @@ var projectSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now, required: true },
   projectData: Object,
   summary: String,
-  technology: Object,
+  technology: Array,
   gitLink: String,
   liveSiteLink: String,
   projectOrder: Number,

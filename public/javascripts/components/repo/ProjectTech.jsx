@@ -1,5 +1,6 @@
 import React from 'react';
 import SingleLanguage from './SingleLanguage';
+import SingleTechnology from './SingleTechnology';
 
 let smallSpacer = {
   'marginTop': '10px',
@@ -16,6 +17,9 @@ export default class ProjectTech extends React.Component {
     console.log(this.props);
     let allLanguages = this.props.languages.map( (el, idx) => {
       return <SingleLanguage language={el} key={idx} index={idx} removeLanguage={this.props.removeLanguage} />
+    })
+    let allTech = this.props.technology.map( (el, idx) => {
+      return <SingleTechnology technology={el} key={idx} index={idx} removeTechnology={this.props.removeTechnology} />
     })
     return (
       <div className="row tech-wrapper">
@@ -42,13 +46,16 @@ export default class ProjectTech extends React.Component {
           <strong>Technology</strong>
         </div>
         <div className="input-field col s12 m6">
-          <input id="new-tech" type="text" ref="new-tech" />
+          <input id="new-tech" type="text" ref="new-tech" onKeyUp={this.props.addNewTechnology} />
           <label htmlFor="new-tech">Tech</label>
         </div>
         <div className="input-field col s12 m6">
-          <input id="tech-version" type="text" ref="tech-version" />
+          <input id="tech-version" type="text" ref="tech-version" onKeyUp={this.props.addNewTechnology} />
           <label htmlFor="tech-version">Version (optional)</label>
         </div>
+        <ul className='collection'>
+          {allTech}
+        </ul>
       </div>
     )
   }
