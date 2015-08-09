@@ -55,5 +55,14 @@ export default {
     .error(error => {
       console.log(error);
     })
+  },
+  saveProject(project) {
+    $.post(`/repo/${project.projectId}`, project)
+    .success(project => {
+      console.log(project);
+    })
+    .error(error => {
+      console.log(error);
+    })
   }
 }

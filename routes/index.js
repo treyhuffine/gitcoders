@@ -115,6 +115,29 @@ var routes = (passport, mongoose) => {
   router.get('/', (req, res, next) => {
     res.render('index', { currentUserData: req.user });
   });
+  router.post('/repo/:repoid', (req, res, next) => {
+    let ActiveProjects = require('../models/activeprojects');
+    ActiveProjects.findOne( {projectId: req.params.repoid}, (err, repo) => {
+      if (!repo) {
+        res.redirect('/#/');
+        return;
+      }
+      if (!req.user || repo.repoOwner.toLowerCase() !== req.user.username.toLowerCase()) {
+        res.redirect('/#/');
+        return;
+      }
+
+      repo.technology = req.body['technology[]'];
+      repo.languages = req.body['languages[]'];
+      repo.summary = req.body.summary;
+      repo.projectTagline = req.body.projectTagline;
+      repo.liveSiteLink = req.body.liveSiteLink;
+
+      console.log(repo);
+      repo.save();
+      res.json(repo);
+    })
+  })
 
   return router;
 }

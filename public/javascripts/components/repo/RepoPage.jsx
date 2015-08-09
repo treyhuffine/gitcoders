@@ -68,6 +68,7 @@ export default class RepoPage extends React.Component {
     this.removeLanguage = this.removeLanguage.bind(this);
     this.addNewTechnology = this.addNewTechnology.bind(this);
     this.removeTechnology = this.removeTechnology.bind(this);
+    this.saveProject = this.saveProject.bind(this);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
@@ -108,6 +109,13 @@ export default class RepoPage extends React.Component {
     this.state.activeRepo.technology.splice(idx, 1);
     this.setState(this.state);
   }
+  saveProject() {
+    this.state.activeRepo.summary = $('#project-description').val();
+    this.state.activeRepo.projectTagline = $('#edit-project-tagline').val();
+    this.state.activeRepo.liveSiteLink = $('#live-porject-site').val();
+    this.setState(this.state);
+    API.saveProject(this.state.activeRepo);
+  }
   render() {
     console.log(this.state);
     return (
@@ -117,7 +125,7 @@ export default class RepoPage extends React.Component {
 
             <div className="row card-panel white" style={topBuffer}>
               <div className="tab-title col m12 s12">
-                <button className="btn waves-effect waves-light green right" style={buttonStyle}>
+                <button className="btn waves-effect waves-light green right" style={buttonStyle} onClick={this.saveProject}>
                   <span style={buttonFont}>Save Project</span>
                   <i className="material-icons" style={iconSize}>done</i>
                 </button>
@@ -157,21 +165,21 @@ export default class RepoPage extends React.Component {
                     <strong>Live Project URL</strong>
                   </div>
                   <div className="input-field col s12">
-                    <input id="live-porject-site" type="url" ref="live-site"/>
+                    <input id="live-porject-site" type="url" ref="live-site" className='validate'/>
                     <label htmlFor="live-porject-site">Project site</label>
                   </div>
                   <div className="col s12">
                     <strong>Give it a strong first impression</strong>
                   </div>
                   <div className="input-field col s12">
-                    <input id="edit-project-tagline" type="text" className="validate" ref="tagline" maxLength="140"/>
+                    <input id="edit-project-tagline" type="text" ref="tagline" maxLength="140"/>
                     <label htmlFor="edit-project-tagline">Project tagline</label>
                   </div>
                   <div className="col s12">
                     <strong>Brief project summary</strong>
                   </div>
                   <div className="input-field col s12">
-                    <textarea id="project-description" type="text" className="materialize-textarea validate" length="1000" maxLength="1000" ref="bio"></textarea>
+                    <textarea id="project-description" type="text" className="materialize-textarea" length="1000" maxLength="1000" ref="bio"></textarea>
                     <label htmlFor="project-description">Summary</label>
                   </div>
                 </div>

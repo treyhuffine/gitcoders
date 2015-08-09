@@ -29,11 +29,9 @@ export default class EditPage extends React.Component {
     super(props);
     this.state = getCurrentUserFromStore();
     this.onStoreChange = this.onStoreChange.bind(this);
-    console.log("state$$$$$", this.state);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
-    console.log("change", this.state);
   }
   componentDidMount() {
     CurrentUserStore.addChangeListener(this.onStoreChange);
@@ -42,7 +40,6 @@ export default class EditPage extends React.Component {
     CurrentUserStore.removeChangeListener(this.onStoreChange);
   }
   render() {
-    console.log("STATE", this.state);
     if (!$.isEmptyObject(this.state.currentUser.githubData)) {
       return (
         <Tabs>

@@ -83,7 +83,6 @@ export default class EditProject extends React.Component {
     API.updateActiveProjects(activeRepoIndex, currentUser);
   }
   render() {
-    console.log(this.state);
     return (
       <div className="row card-panel grey lighten-5" style={topBuffer}>
         <div className="project-wrapper">

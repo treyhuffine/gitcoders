@@ -24,7 +24,7 @@ export default class ProjectTech extends React.Component {
     return (
       <div className="row tech-wrapper">
         <div className="col m12" style={projectSection}>
-          Details
+          Details (Press enter to add)
         </div>
         <div className="col s12">
           <strong>Programming Languages</strong>
