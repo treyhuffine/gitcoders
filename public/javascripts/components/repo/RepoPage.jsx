@@ -6,6 +6,8 @@ import API from '../../API';
 import CurrentUserStore from '../../stores/CurrentUserStore';
 import ActiveRepoStore from '../../stores/ActiveRepoStore';
 import ProjectTech from './ProjectTech';
+import ActiveRepoLinks from './ActiveRepoLinks';
+import UserActionsCreator from '../..//actions/UserActionsCreator';
 
 let getCurrentUserFromStore = () => {
   return { currentUser: CurrentUserStore.getCurrentUser() };
@@ -28,15 +30,6 @@ let tabTitle = {
 let projectSection = {
   'color': 'rgb(152, 147, 147)',
   'fontSize': '1.5rem',
-  'marginBottom': '10px'
-}
-let linkTag = {
-  'marginTop': '9px'
-}
-let inputStyle = {
-  'height': '2rem'
-}
-let bottomBuffer = {
   'marginBottom': '10px'
 }
 let borderSeperator = {
@@ -81,6 +74,7 @@ export default class RepoPage extends React.Component {
   componentWillUnmount() {
     CurrentUserStore.removeChangeListener(this.onStoreChange);
     ActiveRepoStore.removeChangeListener(this.onStoreChange);
+    UserActionsCreator.clearActiveRepo();
   }
   addNewLanguage(e) {
     if (e.keyCode === 13 && $('#new-language').val()) {
@@ -99,13 +93,10 @@ export default class RepoPage extends React.Component {
     }
   }
   removeLanguage(idx) {
-    console.log(idx);
     this.state.activeRepo.languages.splice(idx, 1);
     this.setState(this.state);
   }
   removeTechnology(idx) {
-    console.log(idx);
-    console.log(this.state);
     this.state.activeRepo.technology.splice(idx, 1);
     this.setState(this.state);
   }
@@ -117,7 +108,6 @@ export default class RepoPage extends React.Component {
     API.saveProject(this.state.activeRepo);
   }
   render() {
-    console.log(this.state);
     return (
       <div className="active-repo-wrapper">
         <Tabs>
@@ -130,7 +120,7 @@ export default class RepoPage extends React.Component {
                   <i className="material-icons" style={iconSize}>done</i>
                 </button>
                 <div style={tabTitle}>
-                  Edit Project
+                  Edit Project: {this.state.activeRepo.projectData.name}
                 </div>
               </div>
               <div className="col l4 m12 s12">
@@ -152,37 +142,7 @@ export default class RepoPage extends React.Component {
                 </div>
               </div>
               <div className="col l4 m12 s12" style={borderSeperator}>
-                <div className="row">
-                  <div className="col m12" style={projectSection}>
-                    Links:
-                  </div>
-                  <div className="git-url">
-                    <div className="col s12 m12" style={bottomBuffer}>
-                      <a href={`${this.state.activeRepo.projectData.svn_url}`}>GitHub Repo URL</a>
-                    </div>
-                  </div>
-                  <div className="col s12">
-                    <strong>Live Project URL</strong>
-                  </div>
-                  <div className="input-field col s12">
-                    <input id="live-porject-site" type="url" ref="live-site" className='validate'/>
-                    <label htmlFor="live-porject-site">Project site</label>
-                  </div>
-                  <div className="col s12">
-                    <strong>Give it a strong first impression</strong>
-                  </div>
-                  <div className="input-field col s12">
-                    <input id="edit-project-tagline" type="text" ref="tagline" maxLength="140"/>
-                    <label htmlFor="edit-project-tagline">Project tagline</label>
-                  </div>
-                  <div className="col s12">
-                    <strong>Brief project summary</strong>
-                  </div>
-                  <div className="input-field col s12">
-                    <textarea id="project-description" type="text" className="materialize-textarea" length="1000" maxLength="1000" ref="bio"></textarea>
-                    <label htmlFor="project-description">Summary</label>
-                  </div>
-                </div>
+                <ActiveRepoLinks gitUrl={this.state.activeRepo.projectData.svn_url} />
               </div>
               <div className="col l4 m12 s12">
                 <ProjectTech addNewLanguage={this.addNewLanguage}

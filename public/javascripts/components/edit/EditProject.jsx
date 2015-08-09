@@ -77,7 +77,7 @@ export default class EditProject extends React.Component {
     let activeRepoIndex = [];
     repos.forEach( (el, idx) => {
       if (el.isActive) {
-        activeRepoIndex.push(idx);
+        activeRepoIndex.push(el);
       }
     })
     API.updateActiveProjects(activeRepoIndex, currentUser);

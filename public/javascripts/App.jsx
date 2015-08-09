@@ -15,11 +15,9 @@ export default class App extends React.Component {
     super(props);
     this.state = getCurrentUserFromStore();
     this.onStoreChange = this.onStoreChange.bind(this);
-    console.log("state$$$$$", this.state);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
-    console.log("change", this.state);
   }
   componentDidMount() {
     CurrentUserStore.addChangeListener(this.onStoreChange);
@@ -31,7 +29,6 @@ export default class App extends React.Component {
     children: PropTypes.object
   }
   render() {
-    console.log(this);
     return (
       <div className="app-wrapper">
         <NavGC currentUser={this.state.currentUser} />

@@ -17,5 +17,10 @@ export default {
   },
   updateUserInfo(info, currentUser) {
     API.updateUserInfo(info, currentUser);
+  },
+  clearActiveRepo() {
+    AppDispatcher.dispatch({
+      actionType: Actions.CLEAR_ACTIVE_REPO
+    })
   }
 }

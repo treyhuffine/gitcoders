@@ -54,14 +54,11 @@ var routes = (passport, mongoose) => {
     res.json({message: 'Ahoy endpoint'});
   });
   router.put('/user/:username/repos', (req, res, next) => {
-    console.log(req.params, req.body, req.body['repos[]']);
     let repoIndex = [];
     let allRepos = (typeof req.body['repos[]'] === 'string' ? [ req.body['repos[]'] ] : req.body['repos[]']);
     allRepos.forEach( (el, idx) => {
-      console.log(el);
       repoIndex.push(Number(el));
     });
-    console.log(repoIndex);
     if (req.params.username.toLowerCase() === req.user.username.toLowerCase()) {
       let Repos = require('../models/repos');
       let ActiveProjects = require('../models/activeprojects');
