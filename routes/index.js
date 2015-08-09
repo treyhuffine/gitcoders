@@ -53,8 +53,10 @@ var routes = (passport, mongoose) => {
     res.json({message: 'Ahoy endpoint'});
   });
   router.put('/user/:username/repos', (req, res, next) => {
+    console.log("EDNPOINT",typeof req.body);
     let repoIndex = [];
     let allRepos = (typeof req.body['repos[]'] === 'string' ? [ req.body['repos[]'] ] : req.body['repos[]']);
+    console.log(allRepos);
     allRepos.forEach( (el, idx) => {
       repoIndex.push(Number(el));
     });
@@ -64,16 +66,31 @@ var routes = (passport, mongoose) => {
       Repos.findOne({ 'username': new RegExp('^'+req.user.username+'$', "i") }, (err, repos) => {
         repos.isActive = repoIndex;
         repos.save();
-        repoIndex.forEach( (el, idx) => {
-          var newProject = new ActiveProjects();
-          newProject.projectData = repos.repoList[el];
-          // check if project exists already
-          newProject.projectOrder = 1;
-          newProject.projectId = repos.repoList[el].id;
-          newProject.repoOwner = req.user.username;
-          newProject.save();
-        });
-        res.json({message: "hit it"});
+        ActiveProjects.find({ 'repoOwner': new RegExp('^'+req.user.username+'$', "i") }, (err, allActiveProjects) => {
+          let activeIds = []
+          repoIndex.forEach( (el, idx) => {
+            activeIds.push(repos.repoList[el].id);
+          })
+          console.log(activeIds);
+          allActiveProjects.forEach( (el, idx) => {
+            console.log(el);
+            if (activeIds.indexOf(el.projectId) > -1) {
+              activeId.splice(activeId[indexOf(el.projectId)], 1); // delete entry here
+            } else {
+              el.remove();
+            }
+          })
+          activeIds.forEach( (el, idx) => {
+            var newProject = new ActiveProjects();
+            newProject.projectData = repos.repoList[el];
+            // check if project exists already
+            newProject.projectOrder = 1;
+            newProject.projectId = repos.repoList[el].id;
+            newProject.repoOwner = req.user.username;
+            newProject.save();
+          });
+          res.json({message: "hit it"});
+        })
       })
     }
     else {

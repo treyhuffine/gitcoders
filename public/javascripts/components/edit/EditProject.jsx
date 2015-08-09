@@ -47,7 +47,8 @@ export default class EditProject extends React.Component {
 
     let activeRepos = this.props.userData.currentUser.repos.isActive;
     activeRepos.forEach( (el, idx) => {
-      this.props.userData.currentUser.repos.repoList[idx].isActive = true;
+      console.log(el);
+      this.props.userData.currentUser.repos.repoList[el].isActive = true;
     });
 
     this.state = {repoList: this.props.userData.currentUser.repos.repoList};
@@ -74,10 +75,12 @@ export default class EditProject extends React.Component {
   saveProjects() {
     let currentUser = this.props.userData.currentUser.username;
     let repos = this.state.repoList;
+    console.log(repos);
     let activeRepoIndex = [];
     repos.forEach( (el, idx) => {
+      console.log(idx);
       if (el.isActive) {
-        activeRepoIndex.push(el);
+        activeRepoIndex.push(idx);
       }
     })
     API.updateActiveProjects(activeRepoIndex, currentUser);
