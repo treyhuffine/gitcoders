@@ -53,6 +53,11 @@ export default class ActiveProjectCard extends React.Component {
               {techArray}
             </div>
           </div>
+          <div className='col 12'>
+            <div className='summary'>
+              {this.props.repoInfo.summary}
+            </div>
+          </div>
         </div>
       </li>
     )
