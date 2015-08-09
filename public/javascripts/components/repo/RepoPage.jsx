@@ -118,7 +118,7 @@ export default class RepoPage extends React.Component {
             <div className="row card-panel white" style={topBuffer}>
               <div className="tab-title col m12 s12">
                 <button className="btn waves-effect waves-light green right" style={buttonStyle}>
-                  <span style={buttonFont}>Save Active</span>
+                  <span style={buttonFont}>Save Project</span>
                   <i className="material-icons" style={iconSize}>done</i>
                 </button>
                 <div style={tabTitle}>
