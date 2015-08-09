@@ -44,11 +44,6 @@ export default class Profile extends React.Component {
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
     this.setState(getUserProfileFromStore());
-    let activeRepos = this.state.userProfile.repos.isActive || [];
-    activeRepos.forEach( (el, idx) => {
-      this.state.userProfile.repos.repoList[el].isActive = true;
-    });
-    this.setState(this.state);
   }
   componentWillMount() {
     requestData(this.props);
@@ -72,7 +67,7 @@ export default class Profile extends React.Component {
           </div>
           <div className="col s12 m6">
             <ProfileHeader userData={this.state}/>
-            <ActiveProjectCardList allRepos={this.state.userProfile.repos.repoList || []} />
+            <ActiveProjectCardList activeProjects={this.state.userProfile.activeProjects || []} />
           </div>
           <div className="col s12 m3">
             <div className="card-panel white">

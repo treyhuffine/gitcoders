@@ -14,6 +14,9 @@ let projectTitle = {
 
 export default class ActiveProjectCardList extends React.Component {
   render() {
+    let activeProjectCards = this.props.activeProjects.map( (el, idx) => {
+      return <ActiveProjectCard key={idx} index={idx} repoInfo={el} />
+    })
     return (
       <div className='row'>
         <div className='card-panel white'>
@@ -23,7 +26,7 @@ export default class ActiveProjectCardList extends React.Component {
             </div>
           </div>
           <ul className='collection'>
-            <ActiveProjectCard />
+            {activeProjectCards}
           </ul>
         </div>
       </div>
