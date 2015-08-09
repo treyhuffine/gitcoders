@@ -4,9 +4,10 @@ import AppEventEmitter from "./AppEventEmitter";
 import API from "../API";
 
 let _activeRepo = {
-  imageLink: [],
+  imageLinks: [],
   projectData: {},
-  technology: []
+  technology: {},
+  languages: []
 }
 
 class ActiveRepoEventEmitter extends AppEventEmitter {

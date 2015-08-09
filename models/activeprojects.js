@@ -2,14 +2,16 @@ var mongoose = require('mongoose');
 var projectSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now, required: true },
   projectData: Object,
-  description: String,
-  technology: Array,
+  summary: String,
+  technology: Object,
   gitLink: String,
   liveSiteLink: String,
   projectOrder: Number,
   projectId: String,
   imageLinks: Array,
-  repoOwner: String
+  repoOwner: String,
+  languages: Array,
+  projectTagline: String
 
 })
 var ActiveProjects = mongoose.model('ActiveProjects', projectSchema);

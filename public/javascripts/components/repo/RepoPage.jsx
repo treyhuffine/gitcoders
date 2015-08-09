@@ -1,9 +1,11 @@
 import React from 'react';
+import $ from '../../vendor/jquery.min';
 var Tabs = require('react-simpletabs');
 import API from '../../API';
 
 import CurrentUserStore from '../../stores/CurrentUserStore';
 import ActiveRepoStore from '../../stores/ActiveRepoStore';
+import ProjectTech from './ProjectTech';
 
 let getCurrentUserFromStore = () => {
   return { currentUser: CurrentUserStore.getCurrentUser() };
@@ -37,10 +39,6 @@ let inputStyle = {
 let bottomBuffer = {
   'marginBottom': '10px'
 }
-let smallSpacer = {
-  'marginTop': '10px',
-  'marginBottom': '5px'
-}
 let borderSeperator = {
   'borderRight': '1px solid #B4B4B4',
   'borderLeft': '1px solid #B4B4B4'
@@ -64,7 +62,10 @@ export default class RepoPage extends React.Component {
     let { params } = this.props;
     API.getActiveRepo(params.repoid);
     this.state = getActiveRepoFromStore();
+
     this.onStoreChange = this.onStoreChange.bind(this);
+    this.addNewLanguage = this.addNewLanguage.bind(this);
+    this.removeLanguage = this.removeLanguage.bind(this);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
@@ -78,6 +79,19 @@ export default class RepoPage extends React.Component {
     CurrentUserStore.removeChangeListener(this.onStoreChange);
     ActiveRepoStore.removeChangeListener(this.onStoreChange);
   }
+  addNewLanguage(e) {
+    if (e.keyCode === 13 && $('#new-language').val()) {
+      this.state.activeRepo.languages.push($('#new-language').val());
+      $('#new-language').val('');
+      this.setState(this.state);
+      console.log(this.state);
+    }
+  }
+  removeLanguage(idx) {
+    console.log(idx);
+    this.state.activeRepo.languages.splice(idx, 1);
+    this.setState(this.state);
+  }
   render() {
     console.log(this.state);
     return (
@@ -87,7 +101,7 @@ export default class RepoPage extends React.Component {
 
             <div className="row card-panel white" style={topBuffer}>
               <div className="tab-title col m12 s12">
-                <button className="btn waves-effect waves-light green right" style={buttonStyle} onClick={this.saveProjects}>
+                <button className="btn waves-effect waves-light green right" style={buttonStyle}>
                   <span style={buttonFont}>Save Active</span>
                   <i className="material-icons" style={iconSize}>done</i>
                 </button>
@@ -95,7 +109,7 @@ export default class RepoPage extends React.Component {
                   Edit Project
                 </div>
               </div>
-              <div className="col m4 s12">
+              <div className="col l4 m12 s12">
                 <div className="row">
                   <div className="col m12" style={projectSection}>
                     Image Upload:
@@ -113,7 +127,7 @@ export default class RepoPage extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="col m4 s12" style={borderSeperator}>
+              <div className="col l4 m12 s12" style={borderSeperator}>
                 <div className="row">
                   <div className="col m12" style={projectSection}>
                     Links:
@@ -131,7 +145,7 @@ export default class RepoPage extends React.Component {
                     <label htmlFor="live-porject-site">Project site</label>
                   </div>
                   <div className="col s12">
-                    <strong>Brief project summary</strong>
+                    <strong>Give it a strong first impression</strong>
                   </div>
                   <div className="input-field col s12">
                     <input id="edit-project-tagline" type="text" className="validate" ref="tagline" maxLength="140"/>
@@ -146,33 +160,8 @@ export default class RepoPage extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="col m4 s12">
-                <div className="row">
-                  <div className="col m12" style={projectSection}>
-                    Details
-                  </div>
-                  <div className="col s12">
-                    <strong>Programming Languages</strong>
-                  </div>
-                  <div className="input-field col s12">
-                    <input id="new-language" type="text" ref="new-language" />
-                    <label htmlFor="new-language">Add additional language</label>
-                  </div>
-                  <div className="col s12 m12" style={smallSpacer}>
-                    GitHub Default (added automatically): {`${this.state.activeRepo.projectData.language}`}
-                  </div>
-                  <div className="col s12">
-                    <strong>Tech</strong>
-                  </div>
-                  <div className="input-field col s12 m6">
-                    <input id="new-tech" type="text" ref="new-tech" />
-                    <label htmlFor="new-tech">Tech</label>
-                  </div>
-                  <div className="input-field col s12 m6">
-                    <input id="tech-version" type="text" ref="tech-version" />
-                    <label htmlFor="tech-version">Version (optional)</label>
-                  </div>
-                </div>
+              <div className="col l4 m12 s12">
+                <ProjectTech addNewLanguage={this.addNewLanguage} removeLanguage={this.removeLanguage} languages={this.state.activeRepo.languages} defaultLanguage={this.state.activeRepo.projectData.language} />
               </div>
             </div>
           </Tabs.Panel>
