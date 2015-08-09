@@ -41,6 +41,7 @@ export default {
       type: 'PUT'
     })
     .success(repos => {
+      // SWEET ALERT
       console.log(repos);
     })
     .error(error => {
@@ -59,6 +60,7 @@ export default {
   saveProject(project) {
     $.post(`/repo/${project.projectId}`, project)
     .success(project => {
+      // SWEET ALERT
       console.log(project);
     })
     .error(error => {
