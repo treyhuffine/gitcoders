@@ -45,6 +45,9 @@ export default class Profile extends React.Component {
     this.setState(getCurrentUserFromStore());
     this.setState(getUserProfileFromStore());
   }
+  componentDidMount() {
+    $(".fancybox").fancybox();
+  }
   componentWillMount() {
     requestData(this.props);
     CurrentUserStore.addChangeListener(this.onStoreChange);

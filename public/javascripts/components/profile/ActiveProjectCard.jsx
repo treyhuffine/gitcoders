@@ -1,5 +1,6 @@
 import React from 'react';
 import TechTag from './TechTag';
+import ProjectImage from './ProjectImage';
 
 let repoTitle = {
   'fontSize': '1.4rem',
@@ -12,8 +13,10 @@ let linkStyle = {
 let projectTag = {
   'fontSize': '.8rem'
 }
-let topBuffer = {
-  'marginTop': '7px'
+let imageWrapper = {
+  'marginTop': '12px',
+  'borderBottom': '1px solid #e1e7e2',
+  'marginBottom': '12px'
 }
 
 export default class ActiveProjectCard extends React.Component {
@@ -21,6 +24,9 @@ export default class ActiveProjectCard extends React.Component {
     console.log(this.props.repoInfo);
     let techArray = this.props.repoInfo.technology.map( (el, idx) => {
       return <TechTag key={`tech-${idx}`} tech={el} />
+    })
+    let imageLinks = this.props.repoInfo.imageLinks.map( (el, idx) => {
+      return <ProjectImage key={`img-${idx}`} index={idx} linkPath={el} />
     })
     return (
       <li className='collection-item project-card'>
@@ -45,11 +51,13 @@ export default class ActiveProjectCard extends React.Component {
               {this.props.repoInfo.projectTagline}
             </div>
           </div>
-          <div className='col s12'>
-              Images
+          <div className='col s12' style={imageWrapper}>
+            <div className='project-images'>
+              {imageLinks}
+            </div>
           </div>
           <div className='col s12'>
-            <div className='tech-array' style={topBuffer}>
+            <div className='tech-array'>
               {techArray}
             </div>
           </div>
