@@ -58,6 +58,9 @@ let projectImageHeader = {
   'fontSize': '1.5rem',
   'marginBottom': '20px'
 }
+let loadSpinner = {
+  'display': 'none'
+}
 
 export default class RepoPage extends React.Component {
   constructor(props) {
@@ -73,6 +76,8 @@ export default class RepoPage extends React.Component {
     this.removeTechnology = this.removeTechnology.bind(this);
     this.saveProject = this.saveProject.bind(this);
     this.onUploadFinish = this.onUploadFinish.bind(this);
+    this.onUploadError = this.onUploadError.bind(this);
+    this.onUploadProgress = this.onUploadProgress.bind(this);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
@@ -122,10 +127,18 @@ export default class RepoPage extends React.Component {
     API.saveProject(this.state.activeRepo);
   }
   onUploadFinish(awsObj) {
-    console.log(awsObj);
+    $('#image-load-spinner').hide();
     this.state.activeRepo.imageLinks.push(awsObj.filename);
     this.setState(this.state);
-    console.log(this.state);
+    swal('Booooom!', 'Image uploaded successfuly!', 'success')
+  }
+  onUploadError(awsObj) {
+    $('#image-load-spinner').hide();
+    swal('Oops, our bad...', 'Image not uploaded successfully', 'error')
+  }
+  onUploadProgress(awsObj) {
+    console.log(awsObj);
+    $('#image-load-spinner').show();
   }
   render() {
     let imageLinks = this.state.activeRepo.imageLinks.map( (el, idx) => {
@@ -166,6 +179,19 @@ export default class RepoPage extends React.Component {
                   <div className="col m12">
                     <div className="row">
                       {imageLinks}
+                      <div className='load-container col m6 s12'>                        
+                        <div className="preloader-wrapper big active center-align" id='image-load-spinner' style={loadSpinner}>
+                          <div className="spinner-layer spinner-blue-only">
+                            <div className="circle-clipper left">
+                              <div className="circle"></div>
+                            </div><div className="gap-patch">
+                              <div className="circle"></div>
+                            </div><div className="circle-clipper right">
+                              <div className="circle"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -28,10 +28,10 @@ export default {
   updateUserInfo(info, currentUser) {
     $.post(`/user/${currentUser}/update`, info)
     .success(user => {
-      console.log(user);
+      swal('Awesome!', "Your profile has been updated successfuly", 'success');
     })
     .error(error => {
-      console.log(error);
+      swal("Oops...", "Something went wrong, try again later", "error");
     })
   },
   updateActiveProjects(projects, currentUser) {
@@ -41,11 +41,10 @@ export default {
       type: 'PUT'
     })
     .success(repos => {
-      // SWEET ALERT
-      console.log(repos);
+      swal('Project updated!', "Look at all the cool stuff you've built", 'success');
     })
     .error(error => {
-      console.log(error);
+      swal("Oops...", "Something went wrong, try again later", "error");
     })
   },
   getActiveRepo(repoId) {
@@ -60,11 +59,10 @@ export default {
   saveProject(project) {
     $.post(`/repo/${project.projectId}`, project)
     .success(project => {
-      // SWEET ALERT
-      console.log(project);
+      swal('Oh yeah!', "Your projects have been updated successfuly", 'success');
     })
     .error(error => {
-      console.log(error);
+      swal("Oops...", "Something went wrong, try again later", "error");
     })
   }
 }

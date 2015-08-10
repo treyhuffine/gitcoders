@@ -2,7 +2,7 @@ import React from 'react';
 import constants from '../../constants';
 
 let imageStyle = {
-  'height': '80px',
+  'height': '60px',
   'marginBottom': '15px',
   'border': '4px solid #9f9c9c',
   'borderRadius': '5px'
