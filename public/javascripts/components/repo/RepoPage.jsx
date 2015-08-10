@@ -196,10 +196,7 @@ export default class RepoPage extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="col l4 m12 s12" style={borderSeperator}>
-                <ActiveRepoLinks activeRepo={this.state.activeRepo} />
-              </div>
-              <div className="col l4 m12 s12">
+              <div className="col l4 m12 s12"  style={borderSeperator}>
                 <ProjectTech addNewLanguage={this.addNewLanguage}
                              removeLanguage={this.removeLanguage}
                              languages={this.state.activeRepo.languages}
@@ -208,6 +205,9 @@ export default class RepoPage extends React.Component {
                              removeTechnology={this.removeTechnology}
                              technology={this.state.activeRepo.technology}
                 />
+              </div>
+              <div className="col l4 m12 s12">
+                <ActiveRepoLinks activeRepo={this.state.activeRepo} />
               </div>
             </div>
           </Tabs.Panel>
