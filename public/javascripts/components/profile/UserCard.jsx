@@ -52,10 +52,10 @@ export default class UserCard extends React.Component {
         </div>
         <div>
           <ul className="collection">
-            <li className="collection-item user-link waves-effect"><a href={"mailto:"+this.props.userData.userProfile.user.email} style={anchorStyle}><i className="material-icons" style={matIcon}>email</i><span>Email</span></a></li>
+            <li className="collection-item user-link waves-effect"><a href={"mailto:"+(this.props.userData.userProfile.user.email || this.props.userData.userProfile.user.githubData.email)} style={anchorStyle}><i className="material-icons" style={matIcon}>email</i><span>Email</span></a></li>
             <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.user.personalWebsite} style={anchorStyle}><i className="material-icons" style={matIcon}>description</i><span>Résumé</span></a></li>
             <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.user.personalWebsite} style={anchorStyle}><i className="material-icons" style={matIcon}>perm_identity</i><span>Personal Website</span></a></li>
-            <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.user.blog} style={anchorStyle}><i className="material-icons" style={matIcon}>message</i><span>Blog</span></a></li>
+            <li className="collection-item user-link waves-effect"><a href={this.props.userData.userProfile.user.blog || this.props.userData.userProfile.user.githubData.blog} style={anchorStyle}><i className="material-icons" style={matIcon}>message</i><span>Blog</span></a></li>
             <li className="collection-item user-link waves-effect"><i className="material-icons" style={matIcon}>assessment</i><span>Chat on Gitter</span></li>
           </ul>
         </div>
