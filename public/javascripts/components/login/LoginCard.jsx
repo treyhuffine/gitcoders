@@ -11,7 +11,7 @@ let GCDesc = {
   'marginTop': '20px'
 }
 let signinWrapper = {
-  'marginTop': '4vh'
+  'marginTop': '3.5vh'
 }
 let loginCard = {
   'marginTop': '20vh'
@@ -27,10 +27,10 @@ export default class LoginCard extends React.Component {
               <div className="card-content white-text">
                 <GCTitle />
                 <div className="row">
-                  <div className="col s12 m8" style={GCDesc}>
+                  <div className="col s12 m6" style={GCDesc}>
                     <GCDescription />
                   </div>
-                  <div className="col s12 m4" style={signinWrapper}>
+                  <div className="col s12 offset-m1 m4" style={signinWrapper}>
                     <LoginButton />
                   </div>
                 </div>

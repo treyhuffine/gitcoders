@@ -1,9 +1,8 @@
 import React from 'react';
 import LoginCard from './LoginCard';
 
-let logoStyle = {
-  'marginLeft': '10px'
-}
+$('html').css({'background-image': 'url(/images/landing-background.jpg)'})
+$('body').css({'background-image': 'url(/images/landing-background.jpg)'})
 
 export default class LoginPage extends React.Component {
   render() {
