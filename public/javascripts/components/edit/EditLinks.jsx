@@ -31,6 +31,30 @@ export default class EditLinks extends React.Component {
     Object.keys(this.refs).forEach(key => newAttributes[key] = this.refs[key].getDOMNode().value);
     UserActionsCreator.updateUserInfo(newAttributes, currentUser);
   }
+  componentDidMount() {
+    let userEmail = this.props.userData.currentUser.email ||
+                    this.props.userData.currentUser.githubData.email || '';
+    let blog = this.props.userData.currentUser.blog ||
+               this.props.userData.currentUser.githubData.blog || '';
+    if (userEmail) {
+      $('#edit-email').select().focus().val(userEmail);
+    }
+    if (blog) {
+      $('#edit-blog').select().focus().val(blog);
+    }
+    if (this.props.userData.currentUser.personalWebsite) {
+      $('#edit-website').select().focus().val(this.props.userData.currentUser.personalWebsite);
+    }
+    if (this.props.userData.currentUser.stackoverflow) {
+      $('#edit-stackoverflow').select().focus().val(this.props.userData.currentUser.stackoverflow);
+    }
+    if (this.props.userData.currentUser.twitter) {
+      $('#edit-twitter').select().focus().val(this.props.userData.currentUser.twitter);
+    }
+    if (this.props.userData.currentUser.linkedin) {
+      $('#edit-linkedin').select().focus().val(this.props.userData.currentUser.linkedin);
+    }
+  }
   render() {
     return (
       <form className="col s12" onSubmit={this.updateUser.bind(this)}>
@@ -92,7 +116,7 @@ export default class EditLinks extends React.Component {
                 Twitter URL
               </div>
               <div className="col s12 m8">
-                <input id="edit-twitter" type="url" placeholder="Twitter" className="validate" ref="twitter"/>
+                <input id="edit-twitter" type="url" placeholder="Twitter (https://twitter.com/:twitter_handle)" className="validate" ref="twitter"/>
               </div>
             </div>
             <div className="input-field">
@@ -100,7 +124,7 @@ export default class EditLinks extends React.Component {
                 LinkedIn Public URL
               </div>
               <div className="col s12 m8">
-                <input id="edit-linkedin" type="url" placeholder="LinkedIn (linkedin.com/in/:username)" className="validate" ref="linkedin"/>
+                <input id="edit-linkedin" type="url" placeholder="LinkedIn (https://linkedin.com/in/:username)" className="validate" ref="linkedin"/>
               </div>
             </div>
             <div className="col s12">

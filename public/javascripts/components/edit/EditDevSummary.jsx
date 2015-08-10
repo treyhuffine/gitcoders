@@ -22,6 +22,34 @@ export default class EditDevSummary extends React.Component {
     Object.keys(this.refs).forEach(key => newAttributes[key] = this.refs[key].getDOMNode().value);
     UserActionsCreator.updateUserInfo(newAttributes, currentUser);
   }
+  componentDidMount() {
+    let location = this.props.userData.currentUser.currentLocation ||
+                   this.props.userData.currentUser.githubData.location || '';
+    if (this.props.userData.currentUser.devTitle) {
+      $('#user-title').select().focus().val(this.props.userData.currentUser.devTitle);
+    }
+    if (location) {
+      $('#user-current-location').select().focus().val(location);
+    }
+    if (this.props.userData.currentUser.topTech1) {
+      $('#tech1-input').select().focus().val(this.props.userData.currentUser.topTech1);
+    }
+    if (this.props.userData.currentUser.topTech2) {
+      $('#tech2-input').select().focus().val(this.props.userData.currentUser.topTech2);
+    }
+    if (this.props.userData.currentUser.topTech3) {
+      $('#tech3-input').select().focus().val(this.props.userData.currentUser.topTech3);
+    }
+    if (this.props.userData.currentUser.desiredLocation1) {
+      $('#location1-input').select().focus().val(this.props.userData.currentUser.desiredLocation1);
+    }
+    if (this.props.userData.currentUser.desiredLocation1) {
+      $('#location2-input').select().focus().val(this.props.userData.currentUser.desiredLocation1);
+    }
+    if (this.props.userData.currentUser.desiredLocation1) {
+      $('#location3-input').select().focus().val(this.props.userData.currentUser.desiredLocation1);
+    }
+  }
   render() {
     return (
       <form className="col s12 edit-dev-summary" onSubmit={this.updateUser.bind(this)}>
