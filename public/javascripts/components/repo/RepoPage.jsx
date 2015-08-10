@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from '../../vendor/jquery.min';
 var Tabs = require('react-simpletabs');
 import API from '../../API';
 var ReactS3Uploader = require('react-s3-uploader');
@@ -87,6 +86,9 @@ export default class RepoPage extends React.Component {
     CurrentUserStore.removeChangeListener(this.onStoreChange);
     ActiveRepoStore.removeChangeListener(this.onStoreChange);
     UserActionsCreator.clearActiveRepo();
+  }
+  componentDidMount() {
+    $(".fancybox").fancybox();
   }
   addNewLanguage(e) {
     if (e.keyCode === 13 && $('#new-language').val()) {
