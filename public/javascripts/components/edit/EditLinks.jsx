@@ -66,7 +66,7 @@ export default class EditLinks extends React.Component {
                 <div className="file-field">
                   <input className="file-path validate" type="text" placeholder="Click here to upload file..."/>
                   <span>
-                    <input type="file" />
+                    <input type="file" id='resume-upload'/>
                   </span>
                 </div>
               </div>

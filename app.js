@@ -45,6 +45,10 @@ app.use( (req, user, next) => {
   next();
 });
 
+app.use('/s3', require('react-s3-uploader/s3router')({
+    bucket: "gitcoders",
+    ACL: 'public-read'
+}));
 var routes = require('./routes/index')(passport, mongoose);
 app.use('/', routes);
 app.use('/users', users);

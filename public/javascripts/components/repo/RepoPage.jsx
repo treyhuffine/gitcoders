@@ -2,6 +2,7 @@ import React from 'react';
 import $ from '../../vendor/jquery.min';
 var Tabs = require('react-simpletabs');
 import API from '../../API';
+var ReactS3Uploader = require('react-s3-uploader');
 
 import CurrentUserStore from '../../stores/CurrentUserStore';
 import ActiveRepoStore from '../../stores/ActiveRepoStore';
@@ -48,6 +49,10 @@ let buttonFont = {
 let iconSize = {
   'fontSize': '.8rem'
 }
+let imageSep = {
+  'marginBottom': '10px',
+  'paddingBottom': '10px'
+}
 
 export default class RepoPage extends React.Component {
   constructor(props) {
@@ -62,6 +67,7 @@ export default class RepoPage extends React.Component {
     this.addNewTechnology = this.addNewTechnology.bind(this);
     this.removeTechnology = this.removeTechnology.bind(this);
     this.saveProject = this.saveProject.bind(this);
+    this.onUploadFinish = this.onUploadFinish.bind(this);
   }
   onStoreChange() {
     this.setState(getCurrentUserFromStore());
@@ -107,6 +113,12 @@ export default class RepoPage extends React.Component {
     this.setState(this.state);
     API.saveProject(this.state.activeRepo);
   }
+  onUploadFinish(awsObj) {
+    console.log(awsObj);
+    this.state.activeRepo.imageLinks.push(awsObj.filename);
+    this.setState(this.state);
+    console.log(this.state);
+  }
   render() {
     return (
       <div className="active-repo-wrapper">
@@ -126,18 +138,19 @@ export default class RepoPage extends React.Component {
               <div className="col l4 m12 s12">
                 <div className="row">
                   <div className="col m12" style={projectSection}>
-                    Image Upload:
+                    Image Upload
                   </div>
-                  <div className="col s12" style={{'cursor': 'pointer'}}>
-                    <div className="file-field">
-                      <input className="file-path" type="text" placeholder="Click here to upload file..."/>
-                      <span>
-                        <input type="file" />
-                      </span>
-                    </div>
+                  <div className="col s12" style={imageSep}>
+                    <ReactS3Uploader
+                        signingUrl="/s3/sign"
+                        accept="image/*"
+                        onProgress={this.onUploadProgress}
+                        onError={this.onUploadError}
+                        onFinish={this.onUploadFinish}
+                    />
                   </div>
-                  <div className="col s12">
-                    Image list..
+                  <div className="col m12" style={projectSection}>
+                    Project Images:
                   </div>
                 </div>
               </div>

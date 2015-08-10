@@ -140,6 +140,7 @@ var routes = (passport, mongoose) => {
 
       repo.technology = req.body['technology[]'];
       repo.languages = req.body['languages[]'];
+      repo.imageLinks = req.body['imageLinks[]'];
       repo.summary = req.body.summary;
       repo.projectTagline = req.body.projectTagline;
       repo.liveSiteLink = req.body.liveSiteLink;
