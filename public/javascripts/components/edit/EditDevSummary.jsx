@@ -40,7 +40,7 @@ export default class EditDevSummary extends React.Component {
             <strong>Current location</strong>
           </div>
           <div className="input-field col s12">
-            <input id="user-title" type="text" className="validate" ref="currentLocation"/>
+            <input id="user-current-location" type="text" className="validate" ref="currentLocation"/>
             <label htmlFor="user-title">Location</label>
           </div>
           <div className="col s12">

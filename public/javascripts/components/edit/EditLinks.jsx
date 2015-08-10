@@ -92,7 +92,7 @@ export default class EditLinks extends React.Component {
                 Twitter URL
               </div>
               <div className="col s12 m8">
-                <input id="edit-blog" type="url" placeholder="Twitter" className="validate" ref="twitter"/>
+                <input id="edit-twitter" type="url" placeholder="Twitter" className="validate" ref="twitter"/>
               </div>
             </div>
             <div className="input-field">
