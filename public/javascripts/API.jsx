@@ -60,7 +60,7 @@ export default {
   saveProject(project) {
     $.post(`/repo/${project.projectId}`, project)
     .success(project => {
-      swal('Oh yeah!', "Your projects have been updated successfuly", 'success');
+      swal('Oh yeah!', "Your project has been updated successfuly", 'success');
     })
     .error(error => {
       swal("Oops...", "Something went wrong, try again later", "error");

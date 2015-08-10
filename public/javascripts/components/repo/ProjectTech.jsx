@@ -14,7 +14,6 @@ let projectSection = {
 
 export default class ProjectTech extends React.Component {
   render() {
-    console.log(this.props);
     let allLanguages = this.props.languages.map( (el, idx) => {
       return <SingleLanguage language={el} key={idx} index={idx} removeLanguage={this.props.removeLanguage} />
     })

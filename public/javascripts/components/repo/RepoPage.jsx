@@ -137,13 +137,13 @@ export default class RepoPage extends React.Component {
     swal('Oops, our bad...', 'Image not uploaded successfully', 'error')
   }
   onUploadProgress(awsObj) {
-    console.log(awsObj);
     $('#image-load-spinner').show();
   }
   render() {
     let imageLinks = this.state.activeRepo.imageLinks.map( (el, idx) => {
       return <ProjectImage key={`img-${idx}`} index={idx} linkPath={el} />
     })
+    console.log(this.state);
     return (
       <div className="active-repo-wrapper">
         <Tabs>
@@ -179,7 +179,7 @@ export default class RepoPage extends React.Component {
                   <div className="col m12">
                     <div className="row">
                       {imageLinks}
-                      <div className='load-container col m6 s12'>                        
+                      <div className='load-container col m6 s12'>
                         <div className="preloader-wrapper big active center-align" id='image-load-spinner' style={loadSpinner}>
                           <div className="spinner-layer spinner-blue-only">
                             <div className="circle-clipper left">
@@ -197,7 +197,7 @@ export default class RepoPage extends React.Component {
                 </div>
               </div>
               <div className="col l4 m12 s12" style={borderSeperator}>
-                <ActiveRepoLinks gitUrl={this.state.activeRepo.projectData.svn_url} />
+                <ActiveRepoLinks activeRepo={this.state.activeRepo} />
               </div>
               <div className="col l4 m12 s12">
                 <ProjectTech addNewLanguage={this.addNewLanguage}

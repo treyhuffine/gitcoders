@@ -10,6 +10,28 @@ let projectSection = {
 }
 
 export default class ActiveRepoLinks extends React.Component {
+  componentWillReceiveProps(newProps) {
+    if (newProps.activeRepo.liveSiteLink) {
+      $('#live-project-site').select().focus().val(newProps.activeRepo.liveSiteLink);
+    }
+    if (newProps.activeRepo.projectTagline) {
+      $('#edit-project-tagline').select().focus().val(newProps.activeRepo.projectTagline);
+    }
+    if (newProps.activeRepo.summary) {
+      $('#project-description').select().focus().val(newProps.activeRepo.summary);
+    }
+  }
+  componentDidMount() {
+    if (this.props.activeRepo.liveSiteLink) {
+      $('#live-project-site').select().focus().val(this.props.activeRepo.liveSiteLink);
+    }
+    if (this.props.activeRepo.projectTagline) {
+      $('#edit-project-tagline').select().focus().val(this.props.activeRepo.projectTagline);
+    }
+    if (this.props.activeRepo.summary) {
+      $('#project-description').select().focus().val(this.props.activeRepo.summary);
+    }
+  }
   render() {
     return (
       <div className="row repo-links-wrapper">
@@ -18,14 +40,14 @@ export default class ActiveRepoLinks extends React.Component {
         </div>
         <div className="git-url">
           <div className="col s12 m12" style={bottomBuffer}>
-            <a href={this.props.gitUrl}>GitHub Repo URL</a>
+            <a href={this.props.activeRepo.projectData.svn_url}>GitHub Repo URL</a>
           </div>
         </div>
         <div className="col s12">
           <strong>Live Project URL</strong>
         </div>
         <div className="input-field col s12">
-          <input id="live-porject-site" type="url" ref="live-site" className='validate'/>
+          <input id="live-project-site" type="url" ref="live-site" className='validate'/>
           <label htmlFor="live-porject-site">Project site</label>
         </div>
         <div className="col s12">

@@ -16,7 +16,6 @@ export default class SingleLanguage extends React.Component {
     this.props.removeTechnology(this.props.index);
   }
   render() {
-    console.log(this.props);
     return (
       <li className='collection-item'>
         {this.props.technology}
