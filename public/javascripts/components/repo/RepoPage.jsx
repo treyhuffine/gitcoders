@@ -8,7 +8,8 @@ import CurrentUserStore from '../../stores/CurrentUserStore';
 import ActiveRepoStore from '../../stores/ActiveRepoStore';
 import ProjectTech from './ProjectTech';
 import ActiveRepoLinks from './ActiveRepoLinks';
-import UserActionsCreator from '../..//actions/UserActionsCreator';
+import UserActionsCreator from '../../actions/UserActionsCreator';
+import ProjectImage from './ProjectImage';
 
 let getCurrentUserFromStore = () => {
   return { currentUser: CurrentUserStore.getCurrentUser() };
@@ -52,6 +53,11 @@ let iconSize = {
 let imageSep = {
   'marginBottom': '10px',
   'paddingBottom': '10px'
+}
+let projectImageHeader = {
+  'color': 'rgb(152, 147, 147)',
+  'fontSize': '1.5rem',
+  'marginBottom': '20px'
 }
 
 export default class RepoPage extends React.Component {
@@ -120,6 +126,9 @@ export default class RepoPage extends React.Component {
     console.log(this.state);
   }
   render() {
+    let imageLinks = this.state.activeRepo.imageLinks.map( (el, idx) => {
+      return <ProjectImage key={`img-${idx}`} index={idx} linkPath={el} />
+    })
     return (
       <div className="active-repo-wrapper">
         <Tabs>
@@ -149,8 +158,11 @@ export default class RepoPage extends React.Component {
                         onFinish={this.onUploadFinish}
                     />
                   </div>
-                  <div className="col m12" style={projectSection}>
+                  <div className="col m12" style={projectImageHeader}>
                     Project Images:
+                  </div>
+                  <div className="col m12">
+                    {imageLinks}
                   </div>
                 </div>
               </div>
