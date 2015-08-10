@@ -9,7 +9,7 @@ export default {
         return;
       }
       let newUser = user.user;
-      newUser.repos = user.repos
+      newUser.repos = user.repos;
       ServerActionsCreator.getCurrentUser(newUser);
     })
     .error(error => {
@@ -29,6 +29,7 @@ export default {
     $.post(`/user/${currentUser}/update`, info)
     .success(user => {
       swal('Awesome!', "Your profile has been updated successfuly", 'success');
+      this.getCurrentUser();
     })
     .error(error => {
       swal("Oops...", "Something went wrong, try again later", "error");

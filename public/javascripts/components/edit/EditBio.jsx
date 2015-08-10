@@ -22,6 +22,16 @@ export default class EditBio extends React.Component {
     Object.keys(this.refs).forEach(key => newAttributes[key] = this.refs[key].getDOMNode().value);
     UserActionsCreator.updateUserInfo(newAttributes, currentUser);
   }
+  componentDidMount() {
+    let userBio = this.props.userData.currentUser.bio ||
+                      this.props.userData.currentUser.githubData.bio || '';
+    if (userBio) {
+      $('#user-description').select().focus().val(userBio)
+    }
+    if (this.props.userData.currentUser.tagline) {
+      $('#edit-tagline').select().focus().val(this.props.userData.currentUser.tagline);
+    }
+  }
   render() {
     return (
       <div className="row edit-bio">

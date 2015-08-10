@@ -34,6 +34,9 @@ export default class EditPage extends React.Component {
     this.setState(getCurrentUserFromStore());
   }
   componentDidMount() {
+    console.log('MOUNTED', this.state);
+    console.log($('#user-title'));
+    console.log('top-level', $('#edit-tagline'));
     CurrentUserStore.addChangeListener(this.onStoreChange);
   }
   componentWillUnmount() {
