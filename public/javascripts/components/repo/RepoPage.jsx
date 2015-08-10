@@ -164,7 +164,9 @@ export default class RepoPage extends React.Component {
                     Project Images:
                   </div>
                   <div className="col m12">
-                    {imageLinks}
+                    <div className="row">
+                      {imageLinks}
+                    </div>
                   </div>
                 </div>
               </div>

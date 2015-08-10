@@ -2,11 +2,10 @@ import React from 'react';
 import constants from '../../constants';
 
 let imageStyle = {
-  'width': '80px',
-  'display': 'block',
-  'marginLeft': 'auto',
-  'marginRight': 'auto',
-  'marginBottom': '15px'
+  'height': '80px',
+  'marginBottom': '15px',
+  'border': '4px solid #9f9c9c',
+  'borderRadius': '5px'
 }
 
 export default class ProjectImage extends React.Component {
@@ -15,7 +14,7 @@ export default class ProjectImage extends React.Component {
   }
   render() {
     return (
-      <div className='project-image'>
+      <div className='project-image col s6'>
         <a className="fancybox" rel="group" href={`${constants.AWS_URL}${this.props.linkPath}`}><img src={`${constants.AWS_URL}${this.props.linkPath}`} style={imageStyle} /></a>
       </div>
     )
