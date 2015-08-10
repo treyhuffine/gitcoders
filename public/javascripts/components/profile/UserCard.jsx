@@ -48,7 +48,7 @@ export default class UserCard extends React.Component {
       <div className="card-panel white">
         <div>
           <img src={this.props.userData.userProfile.user.githubData.avatar_url} alt="user" style={userImage} className="z-depth-1"/>
-          <div style={currentLocation}><i className="tiny material-icons" style={matLocation}>location_on</i>{this.props.userData.userProfile.user.githubData.location}</div>
+          <div style={currentLocation}><i className="tiny material-icons" style={matLocation}>location_on</i>{this.props.userData.userProfile.user.currentLocation || this.props.userData.userProfile.user.githubData.location}</div>
         </div>
         <div>
           <ul className="collection">
