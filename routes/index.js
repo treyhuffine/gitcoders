@@ -73,14 +73,16 @@ var routes = (passport, mongoose) => {
           })
           allActiveProjects.forEach( (el, idx) => {
             if (activeIds.indexOf(Number(el.projectId)) > -1) {
-              activeIds.splice(activeIds.indexOf(Number(el.projectId)), 1);
-              repoIndex.splice(activeIds.indexOf(Number(el.projectId)), 1); // delete entry here
+              let spliceVal = activeIds.indexOf(Number(el.projectId));
+              activeIds.splice(spliceVal, 1);
+              repoIndex.splice(spliceVal, 1);
             } else {
               el.remove();
             }
           })
           repoIndex.forEach( (el, idx) => {
-            var newProject = new ActiveProjects();
+            var newProject = null;
+            newProject = new ActiveProjects();
             newProject.projectData = repos.repoList[el];
             newProject.projectOrder = 1;
             newProject.projectId = repos.repoList[el].id;
