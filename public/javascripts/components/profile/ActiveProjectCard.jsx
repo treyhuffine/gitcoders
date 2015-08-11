@@ -3,20 +3,24 @@ import TechTag from './TechTag';
 import ProjectImage from './ProjectImage';
 
 let repoTitle = {
-  'fontSize': '1.4rem',
-  'borderBottom': '7px'
+  'fontSize': '1.6rem',
+  'marginBottom': '8px'
 }
 let linkStyle = {
   'fontSize': '.7rem',
-  'color': 'rgb(47, 65, 91)'
+  'color': 'rgb(64, 91, 130)',
+  'marginBottom': '3px'
 }
 let projectTag = {
-  'fontSize': '.8rem'
+  'fontSize': '1rem'
 }
 let imageWrapper = {
   'marginTop': '12px',
   'borderBottom': '1px solid #e1e7e2',
   'marginBottom': '12px'
+}
+let summaryStyle = {
+  'fontSize': '.85rem'
 }
 
 export default class ActiveProjectCard extends React.Component {
@@ -62,7 +66,7 @@ export default class ActiveProjectCard extends React.Component {
             </div>
           </div>
           <div className='col 12'>
-            <div className='summary'>
+            <div className='summary' style={summaryStyle}>
               {this.props.repoInfo.summary}
             </div>
           </div>
