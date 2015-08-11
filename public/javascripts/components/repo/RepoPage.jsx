@@ -123,7 +123,7 @@ export default class RepoPage extends React.Component {
   saveProject() {
     this.state.activeRepo.summary = $('#project-description').val();
     this.state.activeRepo.projectTagline = $('#edit-project-tagline').val();
-    this.state.activeRepo.liveSiteLink = $('#live-porject-site').val();
+    this.state.activeRepo.liveSiteLink = $('#live-project-site').val();
     this.setState(this.state);
     API.saveProject(this.state.activeRepo);
   }

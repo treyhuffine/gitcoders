@@ -48,7 +48,7 @@ export default class ActiveRepoLinks extends React.Component {
         </div>
         <div className="input-field col s12">
           <input id="live-project-site" type="url" ref="live-site" className='validate'/>
-          <label htmlFor="live-porject-site">Project site</label>
+          <label htmlFor="live-project-site">Project site</label>
         </div>
         <div className="col s12">
           <strong>Give it a strong first impression</strong>
