@@ -35,3 +35,7 @@ a {
   height: 40px;
   margin-top: 11px;
 }
+
+.tabs {
+  white-space: normal !important;
+}
