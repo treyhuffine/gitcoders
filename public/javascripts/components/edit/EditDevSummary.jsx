@@ -43,11 +43,11 @@ export default class EditDevSummary extends React.Component {
     if (this.props.userData.currentUser.desiredLocation1) {
       $('#location1-input').select().focus().val(this.props.userData.currentUser.desiredLocation1);
     }
-    if (this.props.userData.currentUser.desiredLocation1) {
-      $('#location2-input').select().focus().val(this.props.userData.currentUser.desiredLocation1);
+    if (this.props.userData.currentUser.desiredLocation2) {
+      $('#location2-input').select().focus().val(this.props.userData.currentUser.desiredLocation2);
     }
-    if (this.props.userData.currentUser.desiredLocation1) {
-      $('#location3-input').select().focus().val(this.props.userData.currentUser.desiredLocation1);
+    if (this.props.userData.currentUser.desiredLocation3) {
+      $('#location3-input').select().focus().val(this.props.userData.currentUser.desiredLocation3);
     }
   }
   render() {
