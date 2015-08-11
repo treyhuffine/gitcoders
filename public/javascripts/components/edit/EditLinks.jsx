@@ -1,8 +1,14 @@
 import React from 'react';
 import UserActionsCreator from '../../actions/UserActionsCreator';
+var ReactS3Uploader = require('react-s3-uploader');
 
 let linkTag = {
   'marginTop': '17px'
+}
+let resumeTag = {
+  'marginTop': '17px',
+  'paddingLeft': '22px',
+  'marginBottom': '10px'
 }
 let tabTitle = {
   'fontSize': '2rem',
@@ -21,6 +27,10 @@ let httpReminder = {
   'color': 'rgb(135, 134, 134)',
   'textAlign': 'center',
   'marginBottom': '10px'
+}
+let s3Uploder = {
+  'marginTop': '16px',
+  'paddingLeft': '14px'
 }
 
 export default class EditLinks extends React.Component {
@@ -82,17 +92,18 @@ export default class EditLinks extends React.Component {
                 <input id="edit-website" type="url" placeholder="Personal website" className="validate" ref="personalWebsite"/>
               </div>
             </div>
-            <div className="input-field">
-              <div className="col s12 m4" style={linkTag}>
+            <div className="row">
+              <div className="col s12 m4" style={resumeTag}>
                 Résumé
               </div>
-              <div className="col s12 m8" style={{'cursor': 'pointer'}}>
-                <div className="file-field">
-                  <input className="file-path validate" type="text" placeholder="Click here to upload file..."/>
-                  <span>
-                    <input type="file" id='resume-upload'/>
-                  </span>
-                </div>
+              <div className="col s12 m8 resume-upload" style={s3Uploder}>
+                <ReactS3Uploader
+                    signingUrl="/s3/sign"
+                    accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    onProgress={this.onUploadProgress}
+                    onError={this.onUploadError}
+                    onFinish={this.onUploadFinish}
+                />
               </div>
             </div>
             <div className="input-field">
