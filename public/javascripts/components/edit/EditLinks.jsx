@@ -1,13 +1,14 @@
 import React from 'react';
 import UserActionsCreator from '../../actions/UserActionsCreator';
 var ReactS3Uploader = require('react-s3-uploader');
+import constants from '../../constants';
 
 let linkTag = {
   'marginTop': '17px'
 }
 let resumeTag = {
   'marginTop': '17px',
-  'paddingLeft': '22px',
+  'paddingLeft': '21px',
   'marginBottom': '10px'
 }
 let tabTitle = {
@@ -33,12 +34,15 @@ let s3Uploder = {
   'paddingLeft': '14px'
 }
 
+let resumeLink = "";
+
 export default class EditLinks extends React.Component {
   updateUser(e) {
     e.preventDefault();
     let newAttributes = {}
     let currentUser = this.props.userData.currentUser.username;
     Object.keys(this.refs).forEach(key => newAttributes[key] = this.refs[key].getDOMNode().value);
+    newAttributes.resume = resumeLink;
     UserActionsCreator.updateUserInfo(newAttributes, currentUser);
   }
   componentDidMount() {
@@ -64,6 +68,13 @@ export default class EditLinks extends React.Component {
     if (this.props.userData.currentUser.linkedin) {
       $('#edit-linkedin').select().focus().val(this.props.userData.currentUser.linkedin);
     }
+  }
+  onUploadFinish(awsObj) {
+    resumeLink = `${constants.AWS_URL}${awsObj.filename}`;
+    swal('Look at that!', 'We got your resume!', 'success')
+  }
+  onUploadError(awsObj) {
+    swal('Oops, our bad...', 'Resume not uploaded successfully', 'error')
   }
   render() {
     return (

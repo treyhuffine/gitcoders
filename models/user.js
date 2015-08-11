@@ -20,6 +20,7 @@ var userSchema = new mongoose.Schema({
   stackoverflow: String,
   twitter: String,
   linkedin: String,
+  resume: String,
   updatedAt: { type: Date, default: Date.now, required: true },
   repoList: { type: mongoose.Schema.ObjectId, ref: 'Repos'}
 });
