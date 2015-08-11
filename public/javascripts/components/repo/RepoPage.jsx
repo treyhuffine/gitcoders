@@ -9,6 +9,7 @@ import ProjectTech from './ProjectTech';
 import ActiveRepoLinks from './ActiveRepoLinks';
 import UserActionsCreator from '../../actions/UserActionsCreator';
 import ProjectImage from './ProjectImage';
+import ActiveProjectCard from '../profile/ActiveProjectCard';
 
 let getCurrentUserFromStore = () => {
   return { currentUser: CurrentUserStore.getCurrentUser() };
@@ -148,7 +149,6 @@ export default class RepoPage extends React.Component {
       <div className="active-repo-wrapper">
         <Tabs>
           <Tabs.Panel title='Edit Project'>
-
             <div className="row card-panel white" style={topBuffer}>
               <div className="tab-title col m12 s12">
                 <button className="btn waves-effect waves-light green right" style={buttonStyle} onClick={this.saveProject}>
@@ -212,7 +212,24 @@ export default class RepoPage extends React.Component {
             </div>
           </Tabs.Panel>
           <Tabs.Panel title='Preview'>
-            <h1>Preview</h1>
+            <div className='row' style={topBuffer}>
+              <div className='col s12 m8 offset-m2'>
+                <div className='card-panel white'>
+                  <div className="tab-title">
+                    <div style={tabTitle}>
+                      Preview: {this.state.activeRepo.projectData.name}
+                    </div>
+                  </div>
+                  <div className='row'>
+                    <div className='col offset-s1 s10'>
+                      <ul className='collection'>
+                        <ActiveProjectCard repoInfo={this.state.activeRepo} />
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </Tabs.Panel>
         </Tabs>
       </div>
